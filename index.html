@@ -25,6 +25,7 @@
             --badge-open: #E6F4EA;
             --badge-hardware: #E9ECF5;
             --badge-multisig: #E6E9F0;
+            --badge-multichain: #E3F2FD;
             --shadow-sm: 0 8px 20px rgba(0,0,0,0.03), 0 0 0 1px rgba(247,147,26,0.1);
             --shadow-md: 0 12px 28px rgba(0,0,0,0.05), 0 0 0 1px rgba(247,147,26,0.15);
             --filter-bg: #f0e9e2;
@@ -44,6 +45,7 @@
             --badge-open: #1E3A2A;
             --badge-hardware: #2A2A3A;
             --badge-multisig: #2A3538;
+            --badge-multichain: #1E2A3A;
             --shadow-sm: 0 8px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(247,147,26,0.2);
             --shadow-md: 0 12px 28px rgba(0,0,0,0.25), 0 0 0 1px rgba(247,147,26,0.25);
             --filter-bg: #2A3538;
@@ -72,7 +74,6 @@
             padding: 1.5rem 1.5rem 2.5rem;
         }
 
-        /* header + dark mode toggle */
         .header-row {
             display: flex;
             justify-content: space-between;
@@ -154,7 +155,6 @@
             color: var(--btc);
         }
 
-        /* search and filters */
         .controls {
             background: var(--card-bg);
             border-radius: 60px;
@@ -214,12 +214,6 @@
             color: white;
         }
 
-        .filter-chip.reset {
-            background: var(--dark);
-            color: white;
-        }
-
-        /* grid */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -319,6 +313,7 @@
         .badge.opensource { background: var(--badge-open); color: #2c6e3c; }
         .badge.hardware { background: var(--badge-hardware); color: #1e3a6b; }
         .badge.multisig { background: var(--badge-multisig); color: #2c3e3b; }
+        .badge.multichain { background: var(--badge-multichain); color: #0f5b7a; }
 
         body.dark .badge {
             background: #2C3E3B;
@@ -329,6 +324,7 @@
         body.dark .badge.opensource { background: #1E3A2A; color: #8bc34a; }
         body.dark .badge.hardware { background: #2A2A3A; color: #90caf9; }
         body.dark .badge.multisig { background: #2A3538; color: #b0bec5; }
+        body.dark .badge.multichain { background: #1E2A3A; color: #81d4fa; }
 
         footer {
             margin-top: 3rem;
@@ -408,7 +404,7 @@
 </div>
 
 <script>
-    // ----------------------------- DADOS ENRIQUECIDOS COM TAGS -------------------------
+    // ----------------------------- DADOS COMPLETOS COM NOVAS CARTEIRAS -------------------------
     const toolsData = [
         // Diretórios
         { category: "📁 Diretórios", name: "BTCMap.org", url: "https://btcmap.org", tags: ["onchain", "lightning"] },
@@ -447,10 +443,12 @@
         { category: "🔒 Hardware wallets", name: "SafePal", url: "https://www.safepal.com", tags: ["hardware"] },
         { category: "🔒 Hardware wallets", name: "KEESO", url: null, tags: ["hardware"] },
         { category: "🔒 Hardware wallets", name: "KEYSTONE", url: "https://keyst.one", tags: ["hardware", "popular"] },
-        // Non-custodial wallets (adicionados Wallet of Satoshi e coinos.io)
+
+        // ==================== NON-CUSTODIAL WALLETS (originais + novas) ====================
+        // --- originais mantidas ---
         { category: "📱 Non-custodial wallets", name: "ELECTRUM", url: "https://electrum.org", tags: ["opensource", "onchain"] },
         { category: "📱 Non-custodial wallets", name: "mUUn", url: "https://muun.com", tags: ["lightning", "popular"] },
-        { category: "📱 Non-custodial wallets", name: "Phoenix", url: "https://phoenix.acinq.co", tags: ["lightning", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "Phoenix", url: "https://phoenix.acinq.co", tags: ["lightning", "popular", "opensource"] },
         { category: "📱 Non-custodial wallets", name: "ZUS", url: "https://zeusln.com", tags: ["lightning", "opensource"] },
         { category: "📱 Non-custodial wallets", name: "Alby", url: "https://getalby.com", tags: ["lightning", "opensource"] },
         { category: "📱 Non-custodial wallets", name: "TLT", url: null, tags: ["lightning"] },
@@ -460,6 +458,34 @@
         { category: "📱 Non-custodial wallets", name: "MANNA", url: "https://manna.io", tags: ["lightning"] },
         { category: "📱 Non-custodial wallets", name: "Wallet of Satoshi", url: "https://play.google.com/store/apps/details?id=com.livingroomofsatoshi.wallet", tags: ["lightning", "popular"] },
         { category: "📱 Non-custodial wallets", name: "coinos.io", url: "https://coinos.io", tags: ["lightning", "web"] },
+
+        // --- NOVAS CARTEIRAS (adicionadas conforme solicitação) ---
+        { category: "📱 Non-custodial wallets", name: "Breez", url: "https://breez.technology", tags: ["lightning", "opensource"] },
+        { category: "📱 Non-custodial wallets", name: "BlueWallet", url: "https://bluewallet.io", tags: ["lightning", "opensource", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "Strike", url: "https://strike.me", tags: ["lightning", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "Zap", url: "https://zap.jackmallers.com", tags: ["lightning"] },
+        { category: "📱 Non-custodial wallets", name: "Blink", url: "https://blink.sv", tags: ["lightning", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "Eclair Mobile", url: "https://eclair.acinq.co", tags: ["lightning", "opensource"] },
+        { category: "📱 Non-custodial wallets", name: "LND Thin Wallet", url: "https://github.com/lightninglabs/lightning-app", tags: ["lightning", "opensource"] },
+        { category: "📱 Non-custodial wallets", name: "Joule (extension)", url: "https://lightningjoule.com", tags: ["lightning", "opensource"] },
+        { category: "📱 Non-custodial wallets", name: "Speed Wallet", url: "https://speedwallet.com", tags: ["lightning"] },
+        { category: "📱 Non-custodial wallets", name: "Bitkit", url: "https://bitkit.to", tags: ["lightning", "opensource"] },
+        { category: "📱 Non-custodial wallets", name: "Blixt", url: "https://blixtwallet.github.io", tags: ["lightning", "opensource"] },
+        { category: "📱 Non-custodial wallets", name: "CoinOS Lightning", url: "https://coinos.io", tags: ["lightning", "web"] }, // mesmo domínio coinos, mas mantemos como item separado com nome diferente
+        { category: "📱 Non-custodial wallets", name: "Minibits", url: "https://minibits.cash", tags: ["lightning", "ecash"] },
+        { category: "📱 Non-custodial wallets", name: "Moon Wallet", url: "https://moon.io", tags: ["lightning"] },
+        { category: "📱 Non-custodial wallets", name: "Blockstream Green", url: "https://blockstream.com/green", tags: ["lightning", "multichain", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "Trust Wallet", url: "https://trustwallet.com", tags: ["multichain", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "MetaMask", url: "https://metamask.io", tags: ["multichain", "popular", "evm"] },
+        { category: "📱 Non-custodial wallets", name: "Coinbase Wallet", url: "https://wallet.coinbase.com", tags: ["multichain", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "Exodus", url: "https://exodus.com", tags: ["multichain", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "Phantom", url: "https://phantom.app", tags: ["multichain", "popular", "solana"] },
+        { category: "📱 Non-custodial wallets", name: "Atomic Wallet", url: "https://atomicwallet.io", tags: ["multichain"] },
+        { category: "📱 Non-custodial wallets", name: "Edge Wallet", url: "https://edge.app", tags: ["multichain"] },
+        { category: "📱 Non-custodial wallets", name: "Zengo", url: "https://zengo.com", tags: ["multichain", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "Zerion", url: "https://zerion.io", tags: ["multichain", "defi"] },
+        { category: "📱 Non-custodial wallets", name: "Best Wallet", url: "https://bestwallet.com", tags: ["multichain"] },
+
         // Multisig wallets
         { category: "🔐 Multisig wallets", name: "Lily Wallet", url: "https://lilywallet.com", tags: ["multisig", "opensource"] },
         { category: "🔐 Multisig wallets", name: "Liana", url: "https://wizardsardine.com/liana", tags: ["multisig", "opensource"] },
@@ -471,7 +497,7 @@
         { category: "🔐 Multisig wallets", name: "THEYA", url: "https://theya.io", tags: ["multisig"] }
     ];
 
-    // Remover duplicatas e corrigir nomes
+    // Remover duplicatas (garantir que nomes iguais não se repitam)
     const uniqueTools = [];
     const seen = new Set();
     for (const tool of toolsData) {
@@ -481,9 +507,6 @@
             uniqueTools.push(tool);
         }
     }
-    // Corrigir Opportunity Cost
-    const oppIndex = uniqueTools.findIndex(t => t.name === "OPTOPTUNITY COST");
-    if (oppIndex !== -1) uniqueTools[oppIndex].name = "Opportunity Cost";
 
     // ----------------------------- TRADUÇÕES -----------------------------
     const translations = {
@@ -491,7 +514,7 @@
             heroTitle: "Ferramentas do Bitcoin",
             heroSub: "Ecossistema completo · 2026",
             searchPlaceholder: "Buscar ferramenta...",
-            filters: { all: "Todos", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain" },
+            filters: { all: "Todos", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain", multichain: "🌐 Multi-chain" },
             noResults: "Nenhuma ferramenta encontrada 😢",
             darkMode: "🌙 Modo Escuro",
             lightMode: "☀️ Modo Claro"
@@ -500,7 +523,7 @@
             heroTitle: "Bitcoin Tools",
             heroSub: "Complete ecosystem · 2026",
             searchPlaceholder: "Search tool...",
-            filters: { all: "All", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain" },
+            filters: { all: "All", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain", multichain: "🌐 Multi-chain" },
             noResults: "No tools found 😢",
             darkMode: "🌙 Dark Mode",
             lightMode: "☀️ Light Mode"
@@ -509,7 +532,7 @@
             heroTitle: "Herramientas de Bitcoin",
             heroSub: "Ecosistema completo · 2026",
             searchPlaceholder: "Buscar herramienta...",
-            filters: { all: "Todos", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain" },
+            filters: { all: "Todos", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain", multichain: "🌐 Multi-chain" },
             noResults: "No se encontraron herramientas 😢",
             darkMode: "🌙 Modo Oscuro",
             lightMode: "☀️ Modo Claro"
@@ -518,7 +541,7 @@
             heroTitle: "ビットコインツール",
             heroSub: "完全なエコシステム · 2026",
             searchPlaceholder: "ツールを検索...",
-            filters: { all: "すべて", lightning: "⚡ ライトニング", hardware: "🔒 ハードウェア", multisig: "🔐 マルチシグ", opensource: "🖧 オープンソース", onchain: "⛓️ オンチェーン" },
+            filters: { all: "すべて", lightning: "⚡ ライトニング", hardware: "🔒 ハードウェア", multisig: "🔐 マルチシグ", opensource: "🖧 オープンソース", onchain: "⛓️ オンチェーン", multichain: "🌐 マルチチェーン" },
             noResults: "ツールが見つかりません 😢",
             darkMode: "🌙 ダークモード",
             lightMode: "☀️ ライトモード"
@@ -576,6 +599,7 @@
                     if (tool.tags.includes("opensource")) badgesHtml += `<span class="badge opensource">🖧 Open Source</span>`;
                     if (tool.tags.includes("hardware")) badgesHtml += `<span class="badge hardware">🔒 Hardware</span>`;
                     if (tool.tags.includes("multisig")) badgesHtml += `<span class="badge multisig">🔐 Multisig</span>`;
+                    if (tool.tags.includes("multichain")) badgesHtml += `<span class="badge multichain">🌐 Multi‑chain</span>`;
                 }
                 html += `<a ${linkAttrs}><span>₿</span> ${tool.name}<div class="badges">${badgesHtml}</div></a>`;
             }
@@ -601,7 +625,8 @@
                 { id: "hardware", label: t('filters.hardware') },
                 { id: "multisig", label: t('filters.multisig') },
                 { id: "opensource", label: t('filters.opensource') },
-                { id: "onchain", label: t('filters.onchain') }
+                { id: "onchain", label: t('filters.onchain') },
+                { id: "multichain", label: t('filters.multichain') }
             ];
             filterContainer.innerHTML = filters.map(f => 
                 `<button class="filter-chip ${activeFilter === f.id ? 'active' : ''}" data-filter="${f.id}">${f.label}</button>`
@@ -634,7 +659,6 @@
         });
     }
 
-    // Dark mode
     function initDarkMode() {
         const stored = localStorage.getItem("btcToolsDark");
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -647,7 +671,7 @@
             document.body.classList.toggle('dark');
             const nowDark = document.body.classList.contains('dark');
             localStorage.setItem("btcToolsDark", nowDark);
-            updateUITexts(); // atualiza texto do botão
+            updateUITexts();
         });
         updateUITexts();
     }
