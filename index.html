@@ -3,12 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Ferramentas do Bitcoin · Diretório 2026</title>
-    <meta name="description" content="O mais completo diretório de ferramentas Bitcoin: wallets, nodes, analytics, tax, multisig e muito mais. Baseado no guia Bitcoin Tools 2026.">
+    <title>Ferramentas do Bitcoin | Diretório 2026</title>
+    <meta name="description" content="Diretório profissional das principais ferramentas Bitcoin: wallets, nodes, analytics, tax, multisig e muito mais. Com busca, filtros e suporte multilíngue.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --btc: #F7931A;
+            --btc-dark: #e67e00;
+            --dark: #0F1419;
+            --dark-soft: #1e2a2b;
+            --bg: #FAF8F5;
+            --card-bg: #FFFFFF;
+            --border-light: #F0E4D4;
+            --text-primary: #1A2C2E;
+            --text-secondary: #5B6E6E;
+            --accent-neutral: #2C3E3B;
+            --badge-popular: #FFE6CC;
+            --badge-lightning: #FFF0DB;
+            --badge-open: #E6F4EA;
+            --badge-hardware: #E9ECF5;
+            --badge-multisig: #E6E9F0;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.03), 0 0 0 1px rgba(247,147,26,0.1);
+            --shadow-md: 0 12px 28px rgba(0,0,0,0.05), 0 0 0 1px rgba(247,147,26,0.15);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,30 +37,29 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #fefaf5;
-            background-image: radial-gradient(circle at 10% 20%, rgba(247, 147, 26, 0.03) 0%, rgba(251, 188, 5, 0.02) 100%);
-            color: #1a2c2e;
+            background: var(--bg);
+            color: var(--text-primary);
             line-height: 1.4;
         }
 
         .container {
             max-width: 1440px;
             margin: 0 auto;
-            padding: 2rem 1.5rem 3rem;
+            padding: 1.5rem 1.5rem 2.5rem;
         }
 
         /* header */
         .hero {
             text-align: center;
-            margin-bottom: 3rem;
-            padding: 1rem 0 1.5rem;
-            border-bottom: 2px solid #ffb34720;
+            margin-bottom: 2.5rem;
+            padding: 0.5rem 0 1rem;
+            border-bottom: 1px solid var(--border-light);
         }
 
         .hero h1 {
             font-size: 2.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #F7931A, #FFD966);
+            background: linear-gradient(135deg, var(--btc), #FFB347);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -48,27 +67,101 @@
             margin-bottom: 0.5rem;
         }
 
-        .hero .sub {
-            font-size: 1.1rem;
-            color: #5b6e6e;
-            font-weight: 500;
+        .lang-switcher {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
             gap: 0.5rem;
-            flex-wrap: wrap;
+            margin-bottom: 1rem;
         }
 
-        .hero .badge-year {
-            background: #f0e2d0;
-            padding: 0.2rem 0.8rem;
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            padding: 0.3rem 0.8rem;
             border-radius: 40px;
             font-size: 0.8rem;
-            font-weight: 600;
-            color: #c45c0c;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-secondary);
         }
 
-        /* grid categories */
+        .lang-btn.active {
+            background: var(--btc);
+            border-color: var(--btc);
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: #fff1e3;
+            border-color: var(--btc);
+        }
+
+        /* search and filters */
+        .controls {
+            background: var(--card-bg);
+            border-radius: 60px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .search-box {
+            flex: 2;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f5f2ef;
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .filter-chip {
+            background: #f0e9e2;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            color: var(--text-secondary);
+        }
+
+        .filter-chip.active {
+            background: var(--btc);
+            color: white;
+        }
+
+        .filter-chip.reset {
+            background: var(--dark);
+            color: white;
+        }
+
+        /* grid */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -76,102 +169,101 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(0px);
-            border-radius: 32px;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(247, 147, 26, 0.12);
-            transition: transform 0.2s ease, box-shadow 0.2s;
+            background: var(--card-bg);
+            border-radius: 28px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.25s ease;
             overflow: hidden;
         }
 
         .card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px #f7931a30;
+            box-shadow: var(--shadow-md);
         }
 
         .card-header {
-            padding: 1.25rem 1.5rem 0.75rem;
-            border-bottom: 1px solid #ffd9b0;
-            background: #fffaf3;
+            padding: 1.2rem 1.5rem 0.6rem;
+            border-bottom: 1px solid var(--border-light);
+            background: #FFFCF9;
         }
 
         .card-header h2 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: -0.3px;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            letter-spacing: -0.3px;
         }
 
         .card-header h2 span {
-            background: #f7931a10;
-            font-size: 0.8rem;
+            background: var(--btc);
+            color: white;
+            font-size: 0.75rem;
             font-weight: 600;
-            padding: 0.2rem 0.7rem;
+            padding: 0.15rem 0.6rem;
             border-radius: 30px;
-            color: #b9620e;
         }
 
         .tools-list {
-            padding: 1.4rem 1.5rem 1.6rem;
+            padding: 1.2rem 1.5rem 1.5rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 0.7rem;
+            gap: 0.75rem;
             align-items: center;
         }
 
         .tool-chip {
-            background: #ffffff;
-            border: 1px solid #ffe0be;
+            background: white;
+            border: 1px solid var(--border-light);
             padding: 0.45rem 1rem;
             border-radius: 40px;
             font-size: 0.85rem;
             font-weight: 500;
             text-decoration: none;
-            color: #2c3e3b;
+            color: var(--text-primary);
             transition: all 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.02);
+            flex-wrap: wrap;
         }
 
         .tool-chip:hover {
-            background: #f7931a0c;
-            border-color: #f7931a;
-            color: #b45a0c;
-            transform: scale(0.97);
-            text-decoration: none;
+            background: #FEF7E8;
+            border-color: var(--btc);
+            color: var(--btc-dark);
         }
 
-        .tool-chip i {
-            font-style: normal;
+        .badges {
+            display: inline-flex;
+            gap: 4px;
+            margin-left: 4px;
+        }
+
+        .badge {
+            font-size: 0.6rem;
             font-weight: 600;
-            font-size: 0.9rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            background: #f0f0f0;
+            color: #3a4a4a;
+            white-space: nowrap;
         }
 
-        .placeholder-link {
-            opacity: 0.8;
-            border-color: #e9dccc;
-            background: #fefaf5;
-            cursor: default;
-        }
-
-        .placeholder-link:hover {
-            background: #fef2e6;
-            border-color: #ddb582;
-            transform: none;
-            color: #a35f1a;
-        }
+        .badge.popular { background: var(--badge-popular); color: #b45a0c; }
+        .badge.lightning { background: var(--badge-lightning); color: #c45c0c; }
+        .badge.opensource { background: var(--badge-open); color: #2c6e3c; }
+        .badge.hardware { background: var(--badge-hardware); color: #1e3a6b; }
+        .badge.multisig { background: var(--badge-multisig); color: #2c3e3b; }
 
         footer {
-            margin-top: 3.5rem;
+            margin-top: 3rem;
             text-align: center;
-            border-top: 1px solid #f7e1c6;
-            padding-top: 2rem;
-            font-size: 0.85rem;
-            color: #7f8c8c;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.8rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -181,292 +273,308 @@
         .river-badge {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            background: #1a1e1c;
-            padding: 0.5rem 1.4rem;
-            border-radius: 60px;
+            gap: 10px;
+            background: var(--dark);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
             color: #ffcd94;
             font-weight: 600;
             text-decoration: none;
             transition: 0.2s;
         }
 
-        .river-badge:hover {
-            background: #2d2f2c;
-            color: #ffbc6e;
-        }
-
-        .attribution {
-            font-size: 0.75rem;
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            grid-column: 1 / -1;
         }
 
         @media (max-width: 720px) {
-            .container {
-                padding: 1.2rem;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .card-header h2 {
-                font-size: 1.4rem;
-            }
-            .tools-list {
-                gap: 0.55rem;
-            }
-            .tool-chip {
-                font-size: 0.75rem;
-                padding: 0.35rem 0.85rem;
-            }
+            .container { padding: 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .controls { border-radius: 28px; flex-direction: column; align-items: stretch; }
+            .filter-tags { justify-content: center; }
         }
     </style>
 </head>
 <body>
 <div class="container">
+    <div class="lang-switcher" id="langSwitcher">
+        <button data-lang="pt" class="lang-btn active">🇧🇷 PT</button>
+        <button data-lang="en" class="lang-btn">🇺🇸 EN</button>
+        <button data-lang="es" class="lang-btn">🇪🇸 ES</button>
+        <button data-lang="ja" class="lang-btn">🇯🇵 JP</button>
+    </div>
+
     <div class="hero">
-        <h1>₿ ferramentas do bitcoin</h1>
-        <div class="sub">
-            <span>ecossistema completo · 2026</span>
-            <span class="badge-year">🔧 self-custody · nodes · analytics</span>
+        <h1 id="heroTitle">Ferramentas do Bitcoin</h1>
+        <p id="heroSub" style="margin-top: 0.5rem; color: var(--text-secondary);">Ecossistema completo · 2026</p>
+    </div>
+
+    <div class="controls">
+        <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="searchInput" placeholder="Buscar ferramenta..." autocomplete="off">
         </div>
-        <p style="margin-top: 0.8rem; max-width: 620px; margin-left: auto; margin-right: auto; color: #5f6c6a;">As ferramentas essenciais para Bitcoiners — diretório atualizado com base no guia <strong>Bitcoin Tools 2026</strong></p>
+        <div class="filter-tags" id="filterTagsContainer">
+            <!-- filtros dinâmicos via js -->
+        </div>
     </div>
 
     <div class="categories-grid" id="toolsGrid"></div>
 
     <footer>
         <a href="https://river.com" target="_blank" rel="noopener noreferrer" class="river-badge">
-            <span style="font-size:1.2rem;">⚡</span> RIVER <span style="font-weight:400;">| bitcoin financial platform</span>
+            <span>⚡</span> RIVER · Bitcoin Financial Platform
         </a>
-        <div class="attribution">
-            📡 Diretório independente — todas as marcas são propriedade dos respectivos projetos.<br>
-            Links oficiais sempre que disponíveis. Algumas ferramentas possuem site em desenvolvimento.
-        </div>
+        <div class="attribution">📡 Diretório independente — marcas pertencem aos respectivos projetos.</div>
     </footer>
 </div>
 
 <script>
-    // ---- DATA: todas as ferramentas EXATAMENTE como na imagem, com links reais ou placeholders ----
-    const categories = [
-        {
-            name: "📁 Diretórios",
-            items: [
-                { name: "BTCMap.org", url: "https://btcmap.org" },
-                { name: "bitcoin_travel", url: "https://bitcoin.travel" },
-                { name: "spendabit", url: "https://spendabit.co" },
-                { name: "BitcoinJobs", url: "https://bitcoinjobs.co" }
-            ]
-        },
-        {
-            name: "📊 Data & analytics",
-            items: [
-                { name: "Ownership", url: "https://bitinfocharts.com/top-100-richest-bitcoin-addresses.html" },
-                { name: "BITCOINTREASURIESNET", url: "https://bitcointreasuries.net" },
-                { name: "Timechain Index", url: "https://timechainindex.com" }
-            ]
-        },
-        {
-            name: "🖥️ Node software & setup",
-            items: [
-                { name: "umbrel", url: "https://umbrel.com" },
-                { name: "Bitcoin Machine", url: "https://coinkite.com/bitcoin-machine" },
-                { name: "MYNODE", url: "https://mynodebtc.com" },
-                { name: "RASP|BLITZ", url: "https://raspiblitz.com" },
-                { name: "START9", url: "https://start9.com" },
-                { name: "CUBE", url: "https://cube.bitcoin" } 
-            ]
-        },
-        {
-            name: "📑 Tax accounting",
-            items: [
-                { name: "Koinly", url: "https://koinly.io" },
-                { name: "CoinLedger", url: "https://coinledger.io" },
-                { name: "TokenTax", url: "https://tokentax.co" },
-                { name: "CoinTracker", url: "https://cointracker.io" }
-            ]
-        },
-        {
-            name: "⚡ Other",
-            items: [
-                { name: "STACKER NEWS", url: "https://stacker.news" },
-                { name: "OPTOPTUNITY COST", url: "https://optopportunitycost.com" }
-            ]
-        },
-        {
-            name: "🔒 Hardware wallets",
-            items: [
-                { name: "COLDCARD", url: "https://coinkite.com/colcard" },
-                { name: "Ledger", url: "https://www.ledger.com" },
-                { name: "BitBox", url: "https://shiftcrypto.ch" },
-                { name: "OneKey", url: "https://onekey.so" },
-                { name: "ARCULUS", url: "https://arculus.co" },
-                { name: "tangem", url: "https://tangem.com" },
-                { name: "k", url: null },
-                { name: "Keycard", url: "https://keycard.tech" },
-                { name: "SECUX", url: "https://secuxtech.com" },
-                { name: "SafePal", url: "https://www.safepal.com" },
-                { name: "KEESO", url: null },
-                { name: "keycard", url: "https://keycard.tech" },
-                { name: "KEYSTONE", url: "https://keyst.one" }
-            ]
-        },
-        {
-            name: "📱 Non-custodial wallets",
-            items: [
-                { name: "ELECTRUM", url: "https://electrum.org" },
-                { name: "mUUn", url: "https://muun.com" },
-                { name: "Phoenix", url: "https://phoenix.acinq.co" },
-                { name: "ZUS", url: "https://zeusln.com" },
-                { name: "Alby", url: "https://getalby.com" },
-                { name: "TLT", url: null },
-                { name: "Cove", url: "https://cove.bitcoin" },
-                { name: "LNbits", url: "https://lnbits.com" },
-                { name: "LIPA", url: "https://lipa.li" },
-                { name: "MANNA", url: "https://manna.io" }
-            ]
-        },
-        {
-            name: "🔐 Multisig wallets",
-            items: [
-                { name: "Lily Wallet", url: "https://lilywallet.com" },
-                { name: "Llana", url: "https://wizardsardine.com/liana" },
-                { name: "SPECTER", url: "https://specter.solutions" },
-                { name: "Caravan", url: "https://caravan.unchained.com" },
-                { name: "Keeper", url: "https://bitcoinkeeper.app" },
-                { name: "GUARDIAN", url: "https://guardian.com" },
-                { name: "Unchained", url: "https://unchained.com" },
-                { name: "THEYA", url: "https://theya.io" }
-            ]
-        }
+    // ----------------------------- DADOS ENRIQUECIDOS COM TAGS -------------------------
+    const toolsData = [
+        // Diretórios
+        { category: "📁 Diretórios", name: "BTCMap.org", url: "https://btcmap.org", tags: ["onchain", "lightning"] },
+        { category: "📁 Diretórios", name: "bitcoin_travel", url: "https://bitcoin.travel", tags: ["merchant"] },
+        { category: "📁 Diretórios", name: "spendabit", url: "https://spendabit.co", tags: ["commerce"] },
+        { category: "📁 Diretórios", name: "BitcoinJobs", url: "https://bitcoinjobs.co", tags: ["career"] },
+        // Data & analytics
+        { category: "📊 Data & analytics", name: "Ownership", url: "https://bitinfocharts.com/top-100-richest-bitcoin-addresses.html", tags: ["analytics"] },
+        { category: "📊 Data & analytics", name: "BITCOINTREASURIESNET", url: "https://bitcointreasuries.net", tags: ["institutional"] },
+        { category: "📊 Data & analytics", name: "Timechain Index", url: "https://timechainindex.com", tags: ["metrics"] },
+        // Node software
+        { category: "🖥️ Node software & setup", name: "umbrel", url: "https://umbrel.com", tags: ["opensource", "node"] },
+        { category: "🖥️ Node software & setup", name: "Bitcoin Machine", url: "https://coinkite.com/bitcoin-machine", tags: ["hardware", "node"] },
+        { category: "🖥️ Node software & setup", name: "MYNODE", url: "https://mynodebtc.com", tags: ["node", "opensource"] },
+        { category: "🖥️ Node software & setup", name: "RASP|BLITZ", url: "https://raspiblitz.com", tags: ["opensource", "node"] },
+        { category: "🖥️ Node software & setup", name: "START9", url: "https://start9.com", tags: ["opensource", "node"] },
+        { category: "🖥️ Node software & setup", name: "CUBE", url: "https://cube.bitcoin", tags: ["node", "hardware"] },
+        // Tax accounting
+        { category: "📑 Tax accounting", name: "Koinly", url: "https://koinly.io", tags: ["tax"] },
+        { category: "📑 Tax accounting", name: "CoinLedger", url: "https://coinledger.io", tags: ["tax"] },
+        { category: "📑 Tax accounting", name: "TokenTax", url: "https://tokentax.co", tags: ["tax"] },
+        { category: "📑 Tax accounting", name: "CoinTracker", url: "https://cointracker.io", tags: ["tax"] },
+        // Other
+        { category: "⚡ Other", name: "STACKER NEWS", url: "https://stacker.news", tags: ["social"] },
+        { category: "⚡ Other", name: "Opportunity Cost", url: null, tags: ["education"] }, // corrigido nome
+        // Hardware wallets
+        { category: "🔒 Hardware wallets", name: "COLDCARD", url: "https://coinkite.com/colcard", tags: ["hardware", "popular", "opensource"] },
+        { category: "🔒 Hardware wallets", name: "Ledger", url: "https://www.ledger.com", tags: ["hardware", "popular"] },
+        { category: "🔒 Hardware wallets", name: "BitBox", url: "https://shiftcrypto.ch", tags: ["hardware", "opensource"] },
+        { category: "🔒 Hardware wallets", name: "OneKey", url: "https://onekey.so", tags: ["hardware"] },
+        { category: "🔒 Hardware wallets", name: "ARCULUS", url: "https://arculus.co", tags: ["hardware"] },
+        { category: "🔒 Hardware wallets", name: "tangem", url: "https://tangem.com", tags: ["hardware", "popular"] },
+        { category: "🔒 Hardware wallets", name: "k", url: null, tags: ["hardware"] },
+        { category: "🔒 Hardware wallets", name: "Keycard", url: "https://keycard.tech", tags: ["hardware"] }, // duplicada removida
+        { category: "🔒 Hardware wallets", name: "SECUX", url: "https://secuxtech.com", tags: ["hardware"] },
+        { category: "🔒 Hardware wallets", name: "SafePal", url: "https://www.safepal.com", tags: ["hardware"] },
+        { category: "🔒 Hardware wallets", name: "KEESO", url: null, tags: ["hardware"] },
+        { category: "🔒 Hardware wallets", name: "KEYSTONE", url: "https://keyst.one", tags: ["hardware", "popular"] },
+        // Non-custodial wallets
+        { category: "📱 Non-custodial wallets", name: "ELECTRUM", url: "https://electrum.org", tags: ["opensource", "onchain"] },
+        { category: "📱 Non-custodial wallets", name: "mUUn", url: "https://muun.com", tags: ["lightning", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "Phoenix", url: "https://phoenix.acinq.co", tags: ["lightning", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "ZUS", url: "https://zeusln.com", tags: ["lightning", "opensource"] },
+        { category: "📱 Non-custodial wallets", name: "Alby", url: "https://getalby.com", tags: ["lightning", "opensource"] },
+        { category: "📱 Non-custodial wallets", name: "TLT", url: null, tags: ["lightning"] },
+        { category: "📱 Non-custodial wallets", name: "Cove", url: "https://covewallet.org", tags: ["lightning"] },
+        { category: "📱 Non-custodial wallets", name: "LNbits", url: "https://lnbits.com", tags: ["lightning", "opensource"] },
+        { category: "📱 Non-custodial wallets", name: "LIPA", url: "https://lipa.li", tags: ["lightning"] },
+        { category: "📱 Non-custodial wallets", name: "MANNA", url: "https://manna.io", tags: ["lightning"] },
+        // Multisig wallets
+        { category: "🔐 Multisig wallets", name: "Lily Wallet", url: "https://lilywallet.com", tags: ["multisig", "opensource"] },
+        { category: "🔐 Multisig wallets", name: "Liana", url: "https://wizardsardine.com/liana", tags: ["multisig", "opensource"] },
+        { category: "🔐 Multisig wallets", name: "SPECTER", url: "https://specter.solutions", tags: ["multisig", "opensource"] },
+        { category: "🔐 Multisig wallets", name: "Caravan", url: "https://caravan.unchained.com", tags: ["multisig"] },
+        { category: "🔐 Multisig wallets", name: "Keeper", url: "https://bitcoinkeeper.app", tags: ["multisig"] },
+        { category: "🔐 Multisig wallets", name: "GUARDIAN", url: null, tags: ["multisig"] }, // corrigido link inválido
+        { category: "🔐 Multisig wallets", name: "Unchained", url: "https://unchained.com", tags: ["multisig", "popular"] },
+        { category: "🔐 Multisig wallets", name: "THEYA", url: "https://theya.io", tags: ["multisig"] }
     ];
 
-    // Correções / refinamentos de links para melhor experiência
-    const linkOverrides = {
-        "Bitcoin Machine": "https://coinkite.com/bitcoin-machine",
-        "CUBE": "https://cube.bitcoin.com",   // fallback amigável
-        "GUARDIAN": "https://guardian.bitcoin", 
-        "TLT": null,
-        "k": null,
-        "KEESO": null,
-        "OPTOPTUNITY COST": null,
-        "Llana": "https://wizardsardine.com/liana",
-        "ZUS": "https://zeusln.com",
-        "mUUn": "https://muun.com",
-        "Cove": "https://covewallet.org", // aproximação
-        "MANNA": "https://manna.io"
-    };
-
-    // Aplica overrides e garante que todos os itens tenham url definida (null = placeholder)
-    function finalizeUrl(itemName, originalUrl) {
-        if (linkOverrides[itemName] !== undefined) return linkOverrides[itemName];
-        if (originalUrl === "javascript:void(0)" || originalUrl === "#") return null;
-        if (originalUrl && originalUrl !== "") return originalUrl;
-        return null;
-    }
-
-    // Geração dinâmica do grid
-    function buildGrid() {
-        const gridContainer = document.getElementById("toolsGrid");
-        if (!gridContainer) return;
-        gridContainer.innerHTML = "";
-
-        for (const cat of categories) {
-            const card = document.createElement("div");
-            card.className = "card";
-
-            // Header
-            const headerDiv = document.createElement("div");
-            headerDiv.className = "card-header";
-            const title = document.createElement("h2");
-            title.innerHTML = `${cat.name} <span>${cat.items.length}</span>`;
-            headerDiv.appendChild(title);
-            
-            // Lista de tools
-            const listDiv = document.createElement("div");
-            listDiv.className = "tools-list";
-
-            for (const tool of cat.items) {
-                let finalUrl = finalizeUrl(tool.name, tool.url);
-                const isPlaceholder = (finalUrl === null || finalUrl === "");
-                const link = document.createElement("a");
-                link.className = "tool-chip";
-                if (!isPlaceholder) {
-                    link.href = finalUrl;
-                    link.target = "_blank";
-                    link.rel = "noopener noreferrer";
-                } else {
-                    link.href = "javascript:void(0)";
-                    link.classList.add("placeholder-link");
-                    link.title = "🔗 Link não disponível oficialmente (ferramenta listada no diretório 2026)";
-                }
-                // Ícone pequeno de Bitcoin ou externo
-                const iconSpan = document.createElement("span");
-                iconSpan.innerHTML = isPlaceholder ? "🔍" : "₿";
-                iconSpan.style.fontSize = "0.8rem";
-                iconSpan.style.opacity = "0.8";
-                const nameSpan = document.createElement("span");
-                nameSpan.textContent = tool.name;
-                link.appendChild(iconSpan);
-                link.appendChild(nameSpan);
-                listDiv.appendChild(link);
-            }
-            
-            card.appendChild(headerDiv);
-            card.appendChild(listDiv);
-            gridContainer.appendChild(card);
+    // Remover duplicatas: Keycard aparece duas vezes, manter apenas uma
+    const uniqueTools = [];
+    const seen = new Set();
+    for (const tool of toolsData) {
+        const key = `${tool.category}|${tool.name}`;
+        if (!seen.has(key)) {
+            seen.add(key);
+            uniqueTools.push(tool);
         }
-
-        // Pós-geração: pequenos ajustes de acessibilidade para placeholders
-        document.querySelectorAll('.placeholder-link').forEach(el => {
-            el.addEventListener('click', (e) => {
-                e.preventDefault();
-                // feedback visual sutil
-                const tooltipMsg = "🔍 Ferramenta mencionada na lista oficial, aguardando site público.";
-                if (window.getSelection) {
-                    // apenas não navega
+    }
+    // Corrigir nome Opportunity Cost
+    const oppIndex = uniqueTools.findIndex(t => t.name === "OPTOPTUNITY COST");
+    if (oppIndex !== -1) uniqueTools[oppIndex].name = "Opportunity Cost";
+    
+    // ----------------------------- TRADUÇÕES -----------------------------
+    const translations = {
+        pt: {
+            heroTitle: "Ferramentas do Bitcoin",
+            heroSub: "Ecossistema completo · 2026",
+            searchPlaceholder: "Buscar ferramenta...",
+            filters: { all: "Todos", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain" },
+            noResults: "Nenhuma ferramenta encontrada 😢"
+        },
+        en: {
+            heroTitle: "Bitcoin Tools",
+            heroSub: "Complete ecosystem · 2026",
+            searchPlaceholder: "Search tool...",
+            filters: { all: "All", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain" },
+            noResults: "No tools found 😢"
+        },
+        es: {
+            heroTitle: "Herramientas de Bitcoin",
+            heroSub: "Ecosistema completo · 2026",
+            searchPlaceholder: "Buscar herramienta...",
+            filters: { all: "Todos", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain" },
+            noResults: "No se encontraron herramientas 😢"
+        },
+        ja: {
+            heroTitle: "ビットコインツール",
+            heroSub: "完全なエコシステム · 2026",
+            searchPlaceholder: "ツールを検索...",
+            filters: { all: "すべて", lightning: "⚡ ライトニング", hardware: "🔒 ハードウェア", multisig: "🔐 マルチシグ", opensource: "🖧 オープンソース", onchain: "⛓️ オンチェーン" },
+            noResults: "ツールが見つかりません 😢"
+        }
+    };
+    
+    let currentLang = "pt";
+    let activeFilter = "all";
+    let searchTerm = "";
+    
+    // Helper: obter texto traduzido
+    function t(key) {
+        const keys = key.split('.');
+        let val = translations[currentLang];
+        for (let k of keys) val = val?.[k];
+        return val || key;
+    }
+    
+    // Renderização dinâmica com busca e filtro
+    function render() {
+        const grid = document.getElementById("toolsGrid");
+        if (!grid) return;
+        
+        // Filtrar por busca e filtro de tags
+        let filtered = uniqueTools.filter(tool => {
+            const matchSearch = searchTerm === "" || tool.name.toLowerCase().includes(searchTerm.toLowerCase());
+            if (!matchSearch) return false;
+            if (activeFilter === "all") return true;
+            return tool.tags && tool.tags.includes(activeFilter);
+        });
+        
+        // Agrupar por categoria
+        const grouped = {};
+        for (const tool of filtered) {
+            if (!grouped[tool.category]) grouped[tool.category] = [];
+            grouped[tool.category].push(tool);
+        }
+        
+        if (Object.keys(grouped).length === 0) {
+            grid.innerHTML = `<div class="no-results">${t('noResults')}</div>`;
+            return;
+        }
+        
+        let html = "";
+        for (const [cat, tools] of Object.entries(grouped)) {
+            html += `<div class="card">
+                        <div class="card-header">
+                            <h2>${cat} <span>${tools.length}</span></h2>
+                        </div>
+                        <div class="tools-list">`;
+            for (const tool of tools) {
+                const url = tool.url;
+                const isPlaceholder = !url;
+                const linkAttrs = isPlaceholder ? 'href="javascript:void(0)" class="tool-chip placeholder-link"' : `href="${url}" target="_blank" rel="noopener noreferrer" class="tool-chip"`;
+                let badgesHtml = "";
+                if (tool.tags) {
+                    if (tool.tags.includes("popular")) badgesHtml += `<span class="badge popular">⭐ Popular</span>`;
+                    if (tool.tags.includes("lightning")) badgesHtml += `<span class="badge lightning">⚡ Lightning</span>`;
+                    if (tool.tags.includes("opensource")) badgesHtml += `<span class="badge opensource">🖧 Open Source</span>`;
+                    if (tool.tags.includes("hardware")) badgesHtml += `<span class="badge hardware">🔒 Hardware</span>`;
+                    if (tool.tags.includes("multisig")) badgesHtml += `<span class="badge multisig">🔐 Multisig</span>`;
                 }
-                // opcional: alert discreto? melhor não interromper fluxo
-            });
+                html += `<a ${linkAttrs}><span>₿</span> ${tool.name}<div class="badges">${badgesHtml}</div></a>`;
+            }
+            html += `</div></div>`;
+        }
+        grid.innerHTML = html;
+        // tooltips para placeholders
+        document.querySelectorAll('.placeholder-link').forEach(el => {
+            el.setAttribute('title', 'Link oficial não disponível no momento');
         });
     }
-
-    // Ajustes pontuais: "RASP|BLITZ" e outros nomes especiais já estão corretos
-    // Garantia de que nenhum item foi omitido: comparação com lista original
     
-    // Verificação de integridade (opcional) - apenas para debug console
-    function logTotalTools() {
-        let total = 0;
-        categories.forEach(c => total += c.items.length);
-        console.log(`[Ferramentas] Total de ferramentas carregadas: ${total} (Hardware: ${categories[5].items.length}, Non-custodial: ${categories[6].items.length}, Multisig: ${categories[7].items.length})`);
+    // Atualizar textos da interface
+    function updateUITexts() {
+        document.getElementById("heroTitle").innerText = t('heroTitle');
+        document.getElementById("heroSub").innerText = t('heroSub');
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) searchInput.placeholder = t('searchPlaceholder');
+        
+        // recriar botões de filtro com textos traduzidos
+        const filterContainer = document.getElementById("filterTagsContainer");
+        if (filterContainer) {
+            const filters = [
+                { id: "all", label: t('filters.all') },
+                { id: "lightning", label: t('filters.lightning') },
+                { id: "hardware", label: t('filters.hardware') },
+                { id: "multisig", label: t('filters.multisig') },
+                { id: "opensource", label: t('filters.opensource') },
+                { id: "onchain", label: t('filters.onchain') }
+            ];
+            filterContainer.innerHTML = filters.map(f => 
+                `<button class="filter-chip ${activeFilter === f.id ? 'active' : ''}" data-filter="${f.id}">${f.label}</button>`
+            ).join('');
+            // adicionar evento de clique
+            document.querySelectorAll('.filter-chip').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    activeFilter = btn.getAttribute('data-filter');
+                    render();
+                    updateUITexts(); // reaplica classe active
+                });
+            });
+        }
+        render(); // re-renderiza para possíveis mudanças de tags exibidas (sem alteração de filtro)
     }
     
-    // Inicializar
-    buildGrid();
-    logTotalTools();
-
-    // Adiciona link para "RIVER" no footer já incluído, mas também podemos garantir que o RIVER da imagem é exibido com destaque
-    // O footer já contém "RIVER" estilizado.
-    // Pequeno extra: tooltip adicional para itens especiais como "Bitcoin Machine", "CUBE"
-    const specialItems = document.querySelectorAll('.tool-chip');
-    for(let item of specialItems) {
-        if(item.textContent.includes('CUBE') && item.classList.contains('placeholder-link')) {
-            item.title = "CUBE: ferramenta de node em desenvolvimento — verifique comunidade";
-        }
-        if(item.textContent.includes('Bitcoin Machine')) {
-            if(item.href.includes('coinkite')) item.title = "Bitcoin Machine da CoinKite (hardware node + wallet)";
-        }
-        if(item.textContent.includes('OPTOPTUNITY COST')) {
-            item.title = "Ferramenta educacional sobre custo de oportunidade em Bitcoin";
-        }
-        if(item.textContent.includes('KEESO')) {
-            item.title = "Keeso: hardware wallet conceito — site em construção";
-        }
-        if(item.textContent.includes('k')) {
-            item.title = "'k' wallet referenciada no guia 2026, aguardando lançamento";
-        }
-        if(item.textContent.includes('TLT')) {
-            item.title = "TLT wallet (projeto comunitário) – sem site oficial";
-        }
+    // Eventos de linguagem
+    function setLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem("btcToolsLang", lang);
+        updateUITexts();
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
     }
+    
+    // Inicialização
+    function init() {
+        const savedLang = localStorage.getItem("btcToolsLang") || "pt";
+        setLanguage(savedLang);
+        
+        // busca
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value;
+                render();
+            });
+        }
+        
+        // seletor de idioma
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        });
+        
+        render();
+    }
+    
+    init();
 </script>
 </body>
-  </html>
+</html>
