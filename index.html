@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Ferramentas do Bitcoin | Diretório 2026</title>
-    <meta name="description" content="Diretório profissional das principais ferramentas Bitcoin: wallets, nodes, analytics, tax, multisig e muito mais. Com busca, filtros e suporte multilíngue.">
+    <meta name="description" content="Diretório profissional das principais ferramentas Bitcoin: wallets, nodes, analytics, tax, multisig e muito mais. Com busca, filtros, modo escuro e suporte multilíngue.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -27,6 +27,29 @@
             --badge-multisig: #E6E9F0;
             --shadow-sm: 0 8px 20px rgba(0,0,0,0.03), 0 0 0 1px rgba(247,147,26,0.1);
             --shadow-md: 0 12px 28px rgba(0,0,0,0.05), 0 0 0 1px rgba(247,147,26,0.15);
+            --filter-bg: #f0e9e2;
+            --search-bg: #f5f2ef;
+            --placeholder-bg: #fefaf5;
+            --river-bg: var(--dark);
+        }
+
+        body.dark {
+            --bg: #0F1419;
+            --card-bg: #1A2629;
+            --border-light: #2C3E3B;
+            --text-primary: #EDF2F0;
+            --text-secondary: #A0B3B0;
+            --badge-popular: #3A2A1A;
+            --badge-lightning: #3A2A1A;
+            --badge-open: #1E3A2A;
+            --badge-hardware: #2A2A3A;
+            --badge-multisig: #2A3538;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(247,147,26,0.2);
+            --shadow-md: 0 12px 28px rgba(0,0,0,0.25), 0 0 0 1px rgba(247,147,26,0.25);
+            --filter-bg: #2A3538;
+            --search-bg: #1F2A2C;
+            --placeholder-bg: #1E2A2C;
+            --river-bg: #000000;
         }
 
         * {
@@ -40,6 +63,7 @@
             background: var(--bg);
             color: var(--text-primary);
             line-height: 1.4;
+            transition: background-color 0.2s, color 0.2s;
         }
 
         .container {
@@ -48,7 +72,37 @@
             padding: 1.5rem 1.5rem 2.5rem;
         }
 
-        /* header */
+        /* header + dark mode toggle */
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .dark-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            color: var(--text-primary);
+        }
+
+        .dark-toggle:hover {
+            border-color: var(--btc);
+            background: var(--btc);
+            color: white;
+        }
+
         .hero {
             text-align: center;
             margin-bottom: 2.5rem;
@@ -69,9 +123,7 @@
 
         .lang-switcher {
             display: flex;
-            justify-content: flex-end;
             gap: 0.5rem;
-            margin-bottom: 1rem;
         }
 
         .lang-btn {
@@ -94,7 +146,12 @@
 
         .lang-btn:hover:not(.active) {
             background: #fff1e3;
-            border-color: var(--btc);
+            color: var(--btc-dark);
+        }
+
+        body.dark .lang-btn:hover:not(.active) {
+            background: #2C3E3B;
+            color: var(--btc);
         }
 
         /* search and filters */
@@ -117,7 +174,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            background: #f5f2ef;
+            background: var(--search-bg);
             border-radius: 40px;
             padding: 0.4rem 1rem;
         }
@@ -130,6 +187,7 @@
             padding: 0.5rem 0;
             outline: none;
             font-family: inherit;
+            color: var(--text-primary);
         }
 
         .filter-tags {
@@ -140,7 +198,7 @@
         }
 
         .filter-chip {
-            background: #f0e9e2;
+            background: var(--filter-bg);
             border: none;
             padding: 0.4rem 1rem;
             border-radius: 40px;
@@ -184,7 +242,7 @@
         .card-header {
             padding: 1.2rem 1.5rem 0.6rem;
             border-bottom: 1px solid var(--border-light);
-            background: #FFFCF9;
+            background: var(--card-bg);
         }
 
         .card-header h2 {
@@ -214,7 +272,7 @@
         }
 
         .tool-chip {
-            background: white;
+            background: var(--card-bg);
             border: 1px solid var(--border-light);
             padding: 0.45rem 1rem;
             border-radius: 40px;
@@ -233,6 +291,11 @@
             background: #FEF7E8;
             border-color: var(--btc);
             color: var(--btc-dark);
+        }
+
+        body.dark .tool-chip:hover {
+            background: #2C3E3B;
+            color: var(--btc);
         }
 
         .badges {
@@ -257,6 +320,16 @@
         .badge.hardware { background: var(--badge-hardware); color: #1e3a6b; }
         .badge.multisig { background: var(--badge-multisig); color: #2c3e3b; }
 
+        body.dark .badge {
+            background: #2C3E3B;
+            color: #e0c8a0;
+        }
+        body.dark .badge.popular { background: #3A2A1A; color: #ffaa66; }
+        body.dark .badge.lightning { background: #3A2A1A; color: #ffaa66; }
+        body.dark .badge.opensource { background: #1E3A2A; color: #8bc34a; }
+        body.dark .badge.hardware { background: #2A2A3A; color: #90caf9; }
+        body.dark .badge.multisig { background: #2A3538; color: #b0bec5; }
+
         footer {
             margin-top: 3rem;
             text-align: center;
@@ -274,7 +347,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--dark);
+            background: var(--river-bg);
             padding: 0.4rem 1.2rem;
             border-radius: 40px;
             color: #ffcd94;
@@ -301,11 +374,14 @@
 </head>
 <body>
 <div class="container">
-    <div class="lang-switcher" id="langSwitcher">
-        <button data-lang="pt" class="lang-btn active">🇧🇷 PT</button>
-        <button data-lang="en" class="lang-btn">🇺🇸 EN</button>
-        <button data-lang="es" class="lang-btn">🇪🇸 ES</button>
-        <button data-lang="ja" class="lang-btn">🇯🇵 JP</button>
+    <div class="header-row">
+        <div class="lang-switcher" id="langSwitcher">
+            <button data-lang="pt" class="lang-btn active">🇧🇷 PT</button>
+            <button data-lang="en" class="lang-btn">🇺🇸 EN</button>
+            <button data-lang="es" class="lang-btn">🇪🇸 ES</button>
+            <button data-lang="ja" class="lang-btn">🇯🇵 JP</button>
+        </div>
+        <button id="darkModeToggle" class="dark-toggle">🌙 Modo Escuro</button>
     </div>
 
     <div class="hero">
@@ -318,9 +394,7 @@
             <span>🔍</span>
             <input type="text" id="searchInput" placeholder="Buscar ferramenta..." autocomplete="off">
         </div>
-        <div class="filter-tags" id="filterTagsContainer">
-            <!-- filtros dinâmicos via js -->
-        </div>
+        <div class="filter-tags" id="filterTagsContainer"></div>
     </div>
 
     <div class="categories-grid" id="toolsGrid"></div>
@@ -359,7 +433,7 @@
         { category: "📑 Tax accounting", name: "CoinTracker", url: "https://cointracker.io", tags: ["tax"] },
         // Other
         { category: "⚡ Other", name: "STACKER NEWS", url: "https://stacker.news", tags: ["social"] },
-        { category: "⚡ Other", name: "Opportunity Cost", url: null, tags: ["education"] }, // corrigido nome
+        { category: "⚡ Other", name: "Opportunity Cost", url: null, tags: ["education"] },
         // Hardware wallets
         { category: "🔒 Hardware wallets", name: "COLDCARD", url: "https://coinkite.com/colcard", tags: ["hardware", "popular", "opensource"] },
         { category: "🔒 Hardware wallets", name: "Ledger", url: "https://www.ledger.com", tags: ["hardware", "popular"] },
@@ -368,12 +442,12 @@
         { category: "🔒 Hardware wallets", name: "ARCULUS", url: "https://arculus.co", tags: ["hardware"] },
         { category: "🔒 Hardware wallets", name: "tangem", url: "https://tangem.com", tags: ["hardware", "popular"] },
         { category: "🔒 Hardware wallets", name: "k", url: null, tags: ["hardware"] },
-        { category: "🔒 Hardware wallets", name: "Keycard", url: "https://keycard.tech", tags: ["hardware"] }, // duplicada removida
+        { category: "🔒 Hardware wallets", name: "Keycard", url: "https://keycard.tech", tags: ["hardware"] },
         { category: "🔒 Hardware wallets", name: "SECUX", url: "https://secuxtech.com", tags: ["hardware"] },
         { category: "🔒 Hardware wallets", name: "SafePal", url: "https://www.safepal.com", tags: ["hardware"] },
         { category: "🔒 Hardware wallets", name: "KEESO", url: null, tags: ["hardware"] },
         { category: "🔒 Hardware wallets", name: "KEYSTONE", url: "https://keyst.one", tags: ["hardware", "popular"] },
-        // Non-custodial wallets
+        // Non-custodial wallets (adicionados Wallet of Satoshi e coinos.io)
         { category: "📱 Non-custodial wallets", name: "ELECTRUM", url: "https://electrum.org", tags: ["opensource", "onchain"] },
         { category: "📱 Non-custodial wallets", name: "mUUn", url: "https://muun.com", tags: ["lightning", "popular"] },
         { category: "📱 Non-custodial wallets", name: "Phoenix", url: "https://phoenix.acinq.co", tags: ["lightning", "popular"] },
@@ -384,18 +458,20 @@
         { category: "📱 Non-custodial wallets", name: "LNbits", url: "https://lnbits.com", tags: ["lightning", "opensource"] },
         { category: "📱 Non-custodial wallets", name: "LIPA", url: "https://lipa.li", tags: ["lightning"] },
         { category: "📱 Non-custodial wallets", name: "MANNA", url: "https://manna.io", tags: ["lightning"] },
+        { category: "📱 Non-custodial wallets", name: "Wallet of Satoshi", url: "https://play.google.com/store/apps/details?id=com.livingroomofsatoshi.wallet", tags: ["lightning", "popular"] },
+        { category: "📱 Non-custodial wallets", name: "coinos.io", url: "https://coinos.io", tags: ["lightning", "web"] },
         // Multisig wallets
         { category: "🔐 Multisig wallets", name: "Lily Wallet", url: "https://lilywallet.com", tags: ["multisig", "opensource"] },
         { category: "🔐 Multisig wallets", name: "Liana", url: "https://wizardsardine.com/liana", tags: ["multisig", "opensource"] },
         { category: "🔐 Multisig wallets", name: "SPECTER", url: "https://specter.solutions", tags: ["multisig", "opensource"] },
         { category: "🔐 Multisig wallets", name: "Caravan", url: "https://caravan.unchained.com", tags: ["multisig"] },
         { category: "🔐 Multisig wallets", name: "Keeper", url: "https://bitcoinkeeper.app", tags: ["multisig"] },
-        { category: "🔐 Multisig wallets", name: "GUARDIAN", url: null, tags: ["multisig"] }, // corrigido link inválido
+        { category: "🔐 Multisig wallets", name: "GUARDIAN", url: null, tags: ["multisig"] },
         { category: "🔐 Multisig wallets", name: "Unchained", url: "https://unchained.com", tags: ["multisig", "popular"] },
         { category: "🔐 Multisig wallets", name: "THEYA", url: "https://theya.io", tags: ["multisig"] }
     ];
 
-    // Remover duplicatas: Keycard aparece duas vezes, manter apenas uma
+    // Remover duplicatas e corrigir nomes
     const uniqueTools = [];
     const seen = new Set();
     for (const tool of toolsData) {
@@ -405,10 +481,10 @@
             uniqueTools.push(tool);
         }
     }
-    // Corrigir nome Opportunity Cost
+    // Corrigir Opportunity Cost
     const oppIndex = uniqueTools.findIndex(t => t.name === "OPTOPTUNITY COST");
     if (oppIndex !== -1) uniqueTools[oppIndex].name = "Opportunity Cost";
-    
+
     // ----------------------------- TRADUÇÕES -----------------------------
     const translations = {
         pt: {
@@ -416,68 +492,72 @@
             heroSub: "Ecossistema completo · 2026",
             searchPlaceholder: "Buscar ferramenta...",
             filters: { all: "Todos", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain" },
-            noResults: "Nenhuma ferramenta encontrada 😢"
+            noResults: "Nenhuma ferramenta encontrada 😢",
+            darkMode: "🌙 Modo Escuro",
+            lightMode: "☀️ Modo Claro"
         },
         en: {
             heroTitle: "Bitcoin Tools",
             heroSub: "Complete ecosystem · 2026",
             searchPlaceholder: "Search tool...",
             filters: { all: "All", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain" },
-            noResults: "No tools found 😢"
+            noResults: "No tools found 😢",
+            darkMode: "🌙 Dark Mode",
+            lightMode: "☀️ Light Mode"
         },
         es: {
             heroTitle: "Herramientas de Bitcoin",
             heroSub: "Ecosistema completo · 2026",
             searchPlaceholder: "Buscar herramienta...",
             filters: { all: "Todos", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain" },
-            noResults: "No se encontraron herramientas 😢"
+            noResults: "No se encontraron herramientas 😢",
+            darkMode: "🌙 Modo Oscuro",
+            lightMode: "☀️ Modo Claro"
         },
         ja: {
             heroTitle: "ビットコインツール",
             heroSub: "完全なエコシステム · 2026",
             searchPlaceholder: "ツールを検索...",
             filters: { all: "すべて", lightning: "⚡ ライトニング", hardware: "🔒 ハードウェア", multisig: "🔐 マルチシグ", opensource: "🖧 オープンソース", onchain: "⛓️ オンチェーン" },
-            noResults: "ツールが見つかりません 😢"
+            noResults: "ツールが見つかりません 😢",
+            darkMode: "🌙 ダークモード",
+            lightMode: "☀️ ライトモード"
         }
     };
-    
+
     let currentLang = "pt";
     let activeFilter = "all";
     let searchTerm = "";
-    
-    // Helper: obter texto traduzido
+
     function t(key) {
         const keys = key.split('.');
         let val = translations[currentLang];
         for (let k of keys) val = val?.[k];
         return val || key;
     }
-    
-    // Renderização dinâmica com busca e filtro
+
     function render() {
         const grid = document.getElementById("toolsGrid");
         if (!grid) return;
-        
-        // Filtrar por busca e filtro de tags
+
         let filtered = uniqueTools.filter(tool => {
             const matchSearch = searchTerm === "" || tool.name.toLowerCase().includes(searchTerm.toLowerCase());
             if (!matchSearch) return false;
             if (activeFilter === "all") return true;
             return tool.tags && tool.tags.includes(activeFilter);
         });
-        
-        // Agrupar por categoria
+
         const grouped = {};
         for (const tool of filtered) {
             if (!grouped[tool.category]) grouped[tool.category] = [];
             grouped[tool.category].push(tool);
         }
-        
+
         if (Object.keys(grouped).length === 0) {
             grid.innerHTML = `<div class="no-results">${t('noResults')}</div>`;
             return;
         }
-        
+
         let html = "";
         for (const [cat, tools] of Object.entries(grouped)) {
             html += `<div class="card">
@@ -502,20 +582,17 @@
             html += `</div></div>`;
         }
         grid.innerHTML = html;
-        // tooltips para placeholders
         document.querySelectorAll('.placeholder-link').forEach(el => {
             el.setAttribute('title', 'Link oficial não disponível no momento');
         });
     }
-    
-    // Atualizar textos da interface
+
     function updateUITexts() {
         document.getElementById("heroTitle").innerText = t('heroTitle');
         document.getElementById("heroSub").innerText = t('heroSub');
         const searchInput = document.getElementById("searchInput");
         if (searchInput) searchInput.placeholder = t('searchPlaceholder');
-        
-        // recriar botões de filtro com textos traduzidos
+
         const filterContainer = document.getElementById("filterTagsContainer");
         if (filterContainer) {
             const filters = [
@@ -529,19 +606,24 @@
             filterContainer.innerHTML = filters.map(f => 
                 `<button class="filter-chip ${activeFilter === f.id ? 'active' : ''}" data-filter="${f.id}">${f.label}</button>`
             ).join('');
-            // adicionar evento de clique
             document.querySelectorAll('.filter-chip').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     activeFilter = btn.getAttribute('data-filter');
                     render();
-                    updateUITexts(); // reaplica classe active
+                    updateUITexts();
                 });
             });
         }
-        render(); // re-renderiza para possíveis mudanças de tags exibidas (sem alteração de filtro)
+
+        const toggleBtn = document.getElementById("darkModeToggle");
+        if (toggleBtn) {
+            const isDark = document.body.classList.contains('dark');
+            toggleBtn.innerHTML = isDark ? t('lightMode') : t('darkMode');
+        }
+
+        render();
     }
-    
-    // Eventos de linguagem
+
     function setLanguage(lang) {
         currentLang = lang;
         localStorage.setItem("btcToolsLang", lang);
@@ -551,13 +633,29 @@
             else btn.classList.remove('active');
         });
     }
-    
-    // Inicialização
+
+    // Dark mode
+    function initDarkMode() {
+        const stored = localStorage.getItem("btcToolsDark");
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = stored === "true" || (stored === null && prefersDark);
+        if (isDark) document.body.classList.add('dark');
+        else document.body.classList.remove('dark');
+
+        const toggleBtn = document.getElementById("darkModeToggle");
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            const nowDark = document.body.classList.contains('dark');
+            localStorage.setItem("btcToolsDark", nowDark);
+            updateUITexts(); // atualiza texto do botão
+        });
+        updateUITexts();
+    }
+
     function init() {
         const savedLang = localStorage.getItem("btcToolsLang") || "pt";
         setLanguage(savedLang);
-        
-        // busca
+
         const searchInput = document.getElementById("searchInput");
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
@@ -565,15 +663,15 @@
                 render();
             });
         }
-        
-        // seletor de idioma
+
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
         });
-        
+
+        initDarkMode();
         render();
     }
-    
+
     init();
 </script>
 </body>
