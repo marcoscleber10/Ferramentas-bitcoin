@@ -404,97 +404,104 @@
 </div>
 
 <script>
-    // ----------------------------- DADOS COMPLETOS COM NOVAS CARTEIRAS -------------------------
+    // ==================== ESTRUTURA REORGANIZADA ====================
+    // Categorias conforme recomendação profissional
     const toolsData = [
-        // Diretórios
+        // ========== DIRETÓRIOS ==========
         { category: "📁 Diretórios", name: "BTCMap.org", url: "https://btcmap.org", tags: ["onchain", "lightning"] },
         { category: "📁 Diretórios", name: "bitcoin_travel", url: "https://bitcoin.travel", tags: ["merchant"] },
         { category: "📁 Diretórios", name: "spendabit", url: "https://spendabit.co", tags: ["commerce"] },
         { category: "📁 Diretórios", name: "BitcoinJobs", url: "https://bitcoinjobs.co", tags: ["career"] },
-        // Data & analytics
+        
+        // ========== DATA & ANALYTICS ==========
         { category: "📊 Data & analytics", name: "Ownership", url: "https://bitinfocharts.com/top-100-richest-bitcoin-addresses.html", tags: ["analytics"] },
         { category: "📊 Data & analytics", name: "BITCOINTREASURIESNET", url: "https://bitcointreasuries.net", tags: ["institutional"] },
         { category: "📊 Data & analytics", name: "Timechain Index", url: "https://timechainindex.com", tags: ["metrics"] },
-        // Node software
+        
+        // ========== NODE SOFTWARE ==========
         { category: "🖥️ Node software & setup", name: "umbrel", url: "https://umbrel.com", tags: ["opensource", "node"] },
         { category: "🖥️ Node software & setup", name: "Bitcoin Machine", url: "https://coinkite.com/bitcoin-machine", tags: ["hardware", "node"] },
         { category: "🖥️ Node software & setup", name: "MYNODE", url: "https://mynodebtc.com", tags: ["node", "opensource"] },
         { category: "🖥️ Node software & setup", name: "RASP|BLITZ", url: "https://raspiblitz.com", tags: ["opensource", "node"] },
         { category: "🖥️ Node software & setup", name: "START9", url: "https://start9.com", tags: ["opensource", "node"] },
         { category: "🖥️ Node software & setup", name: "CUBE", url: "https://cube.bitcoin", tags: ["node", "hardware"] },
-        // Tax accounting
+        
+        // ========== TAX ACCOUNTING ==========
         { category: "📑 Tax accounting", name: "Koinly", url: "https://koinly.io", tags: ["tax"] },
         { category: "📑 Tax accounting", name: "CoinLedger", url: "https://coinledger.io", tags: ["tax"] },
         { category: "📑 Tax accounting", name: "TokenTax", url: "https://tokentax.co", tags: ["tax"] },
         { category: "📑 Tax accounting", name: "CoinTracker", url: "https://cointracker.io", tags: ["tax"] },
-        // Other
+        
+        // ========== OTHER ==========
         { category: "⚡ Other", name: "STACKER NEWS", url: "https://stacker.news", tags: ["social"] },
-        { category: "⚡ Other", name: "Opportunity Cost", url: null, tags: ["education"] },
-        // Hardware wallets
-        { category: "🔒 Hardware wallets", name: "COLDCARD", url: "https://coinkite.com/colcard", tags: ["hardware", "popular", "opensource"] },
-        { category: "🔒 Hardware wallets", name: "Ledger", url: "https://www.ledger.com", tags: ["hardware", "popular"] },
-        { category: "🔒 Hardware wallets", name: "BitBox", url: "https://shiftcrypto.ch", tags: ["hardware", "opensource"] },
-        { category: "🔒 Hardware wallets", name: "OneKey", url: "https://onekey.so", tags: ["hardware"] },
-        { category: "🔒 Hardware wallets", name: "ARCULUS", url: "https://arculus.co", tags: ["hardware"] },
-        { category: "🔒 Hardware wallets", name: "tangem", url: "https://tangem.com", tags: ["hardware", "popular"] },
-        { category: "🔒 Hardware wallets", name: "k", url: null, tags: ["hardware"] },
-        { category: "🔒 Hardware wallets", name: "Keycard", url: "https://keycard.tech", tags: ["hardware"] },
-        { category: "🔒 Hardware wallets", name: "SECUX", url: "https://secuxtech.com", tags: ["hardware"] },
-        { category: "🔒 Hardware wallets", name: "SafePal", url: "https://www.safepal.com", tags: ["hardware"] },
-        { category: "🔒 Hardware wallets", name: "KEESO", url: null, tags: ["hardware"] },
-        { category: "🔒 Hardware wallets", name: "KEYSTONE", url: "https://keyst.one", tags: ["hardware", "popular"] },
-
-        // ==================== NON-CUSTODIAL WALLETS (originais + novas) ====================
-        // --- originais mantidas ---
-        { category: "📱 Non-custodial wallets", name: "ELECTRUM", url: "https://electrum.org", tags: ["opensource", "onchain"] },
-        { category: "📱 Non-custodial wallets", name: "mUUn", url: "https://muun.com", tags: ["lightning", "popular"] },
-        { category: "📱 Non-custodial wallets", name: "Phoenix", url: "https://phoenix.acinq.co", tags: ["lightning", "popular", "opensource"] },
-        { category: "📱 Non-custodial wallets", name: "ZUS", url: "https://zeusln.com", tags: ["lightning", "opensource"] },
-        { category: "📱 Non-custodial wallets", name: "Alby", url: "https://getalby.com", tags: ["lightning", "opensource"] },
-        { category: "📱 Non-custodial wallets", name: "TLT", url: null, tags: ["lightning"] },
-        { category: "📱 Non-custodial wallets", name: "Cove", url: "https://covewallet.org", tags: ["lightning"] },
-        { category: "📱 Non-custodial wallets", name: "LNbits", url: "https://lnbits.com", tags: ["lightning", "opensource"] },
-        { category: "📱 Non-custodial wallets", name: "LIPA", url: "https://lipa.li", tags: ["lightning"] },
-        { category: "📱 Non-custodial wallets", name: "MANNA", url: "https://manna.io", tags: ["lightning"] },
-        { category: "📱 Non-custodial wallets", name: "Wallet of Satoshi", url: "https://play.google.com/store/apps/details?id=com.livingroomofsatoshi.wallet", tags: ["lightning", "popular"] },
-        { category: "📱 Non-custodial wallets", name: "coinos.io", url: "https://coinos.io", tags: ["lightning", "web"] },
-
-        // --- NOVAS CARTEIRAS (adicionadas conforme solicitação) ---
-        { category: "📱 Non-custodial wallets", name: "Breez", url: "https://breez.technology", tags: ["lightning", "opensource"] },
-        { category: "📱 Non-custodial wallets", name: "BlueWallet", url: "https://bluewallet.io", tags: ["lightning", "opensource", "popular"] },
-        { category: "📱 Non-custodial wallets", name: "Strike", url: "https://strike.me", tags: ["lightning", "popular"] },
-        { category: "📱 Non-custodial wallets", name: "Zap", url: "https://zap.jackmallers.com", tags: ["lightning"] },
-        { category: "📱 Non-custodial wallets", name: "Blink", url: "https://blink.sv", tags: ["lightning", "popular"] },
-        { category: "📱 Non-custodial wallets", name: "Eclair Mobile", url: "https://eclair.acinq.co", tags: ["lightning", "opensource"] },
-        { category: "📱 Non-custodial wallets", name: "LND Thin Wallet", url: "https://github.com/lightninglabs/lightning-app", tags: ["lightning", "opensource"] },
-        { category: "📱 Non-custodial wallets", name: "Joule (extension)", url: "https://lightningjoule.com", tags: ["lightning", "opensource"] },
-        { category: "📱 Non-custodial wallets", name: "Speed Wallet", url: "https://speedwallet.com", tags: ["lightning"] },
-        { category: "📱 Non-custodial wallets", name: "Bitkit", url: "https://bitkit.to", tags: ["lightning", "opensource"] },
-        { category: "📱 Non-custodial wallets", name: "Blixt", url: "https://blixtwallet.github.io", tags: ["lightning", "opensource"] },
-        { category: "📱 Non-custodial wallets", name: "CoinOS Lightning", url: "https://coinos.io", tags: ["lightning", "web"] }, // mesmo domínio coinos, mas mantemos como item separado com nome diferente
-        { category: "📱 Non-custodial wallets", name: "Minibits", url: "https://minibits.cash", tags: ["lightning", "ecash"] },
-        { category: "📱 Non-custodial wallets", name: "Moon Wallet", url: "https://moon.io", tags: ["lightning"] },
-        { category: "📱 Non-custodial wallets", name: "Blockstream Green", url: "https://blockstream.com/green", tags: ["lightning", "multichain", "popular"] },
-        { category: "📱 Non-custodial wallets", name: "Trust Wallet", url: "https://trustwallet.com", tags: ["multichain", "popular"] },
-        { category: "📱 Non-custodial wallets", name: "MetaMask", url: "https://metamask.io", tags: ["multichain", "popular", "evm"] },
-        { category: "📱 Non-custodial wallets", name: "Coinbase Wallet", url: "https://wallet.coinbase.com", tags: ["multichain", "popular"] },
-        { category: "📱 Non-custodial wallets", name: "Exodus", url: "https://exodus.com", tags: ["multichain", "popular"] },
-        { category: "📱 Non-custodial wallets", name: "Phantom", url: "https://phantom.app", tags: ["multichain", "popular", "solana"] },
-        { category: "📱 Non-custodial wallets", name: "Atomic Wallet", url: "https://atomicwallet.io", tags: ["multichain"] },
-        { category: "📱 Non-custodial wallets", name: "Edge Wallet", url: "https://edge.app", tags: ["multichain"] },
-        { category: "📱 Non-custodial wallets", name: "Zengo", url: "https://zengo.com", tags: ["multichain", "popular"] },
-        { category: "📱 Non-custodial wallets", name: "Zerion", url: "https://zerion.io", tags: ["multichain", "defi"] },
-        { category: "📱 Non-custodial wallets", name: "Best Wallet", url: "https://bestwallet.com", tags: ["multichain"] },
-
-        // Multisig wallets
-        { category: "🔐 Multisig wallets", name: "Lily Wallet", url: "https://lilywallet.com", tags: ["multisig", "opensource"] },
-        { category: "🔐 Multisig wallets", name: "Liana", url: "https://wizardsardine.com/liana", tags: ["multisig", "opensource"] },
-        { category: "🔐 Multisig wallets", name: "SPECTER", url: "https://specter.solutions", tags: ["multisig", "opensource"] },
-        { category: "🔐 Multisig wallets", name: "Caravan", url: "https://caravan.unchained.com", tags: ["multisig"] },
-        { category: "🔐 Multisig wallets", name: "Keeper", url: "https://bitcoinkeeper.app", tags: ["multisig"] },
-        { category: "🔐 Multisig wallets", name: "GUARDIAN", url: null, tags: ["multisig"] },
-        { category: "🔐 Multisig wallets", name: "Unchained", url: "https://unchained.com", tags: ["multisig", "popular"] },
-        { category: "🔐 Multisig wallets", name: "THEYA", url: "https://theya.io", tags: ["multisig"] }
+        
+        // ========== ⚡ LIGHTNING NETWORK WALLETS (Especializadas) ==========
+        { category: "⚡ Lightning Network Wallets", name: "Phoenix", url: "https://phoenix.acinq.co", tags: ["lightning", "popular", "opensource"] },
+        { category: "⚡ Lightning Network Wallets", name: "Breez", url: "https://breez.technology", tags: ["lightning", "opensource"] },
+        { category: "⚡ Lightning Network Wallets", name: "Muun", url: "https://muun.com", tags: ["lightning", "popular"] },
+        { category: "⚡ Lightning Network Wallets", name: "Zeus", url: "https://zeusln.com", tags: ["lightning", "opensource"] },
+        { category: "⚡ Lightning Network Wallets", name: "Alby", url: "https://getalby.com", tags: ["lightning", "opensource"] },
+        { category: "⚡ Lightning Network Wallets", name: "Blixt", url: "https://blixtwallet.github.io", tags: ["lightning", "opensource"] },
+        { category: "⚡ Lightning Network Wallets", name: "BlueWallet (Lightning)", url: "https://bluewallet.io", tags: ["lightning", "opensource", "popular"] },
+        { category: "⚡ Lightning Network Wallets", name: "Wallet of Satoshi", url: "https://play.google.com/store/apps/details?id=com.livingroomofsatoshi.wallet", tags: ["lightning", "popular"] },
+        { category: "⚡ Lightning Network Wallets", name: "Strike", url: "https://strike.me", tags: ["lightning", "popular"] },
+        { category: "⚡ Lightning Network Wallets", name: "Blink", url: "https://blink.sv", tags: ["lightning", "popular"] },
+        { category: "⚡ Lightning Network Wallets", name: "Eclair Mobile", url: "https://eclair.acinq.co", tags: ["lightning", "opensource"] },
+        { category: "⚡ Lightning Network Wallets", name: "Zap", url: "https://zap.jackmallers.com", tags: ["lightning"] },
+        { category: "⚡ Lightning Network Wallets", name: "Speed Wallet", url: "https://speedwallet.com", tags: ["lightning"] },
+        { category: "⚡ Lightning Network Wallets", name: "CoinOS Lightning", url: "https://coinos.io", tags: ["lightning", "web"] },
+        { category: "⚡ Lightning Network Wallets", name: "Bitkit", url: "https://bitkit.to", tags: ["lightning", "opensource"] },
+        { category: "⚡ Lightning Network Wallets", name: "Minibits", url: "https://minibits.cash", tags: ["lightning", "ecash"] },
+        { category: "⚡ Lightning Network Wallets", name: "Moon Wallet", url: "https://moon.io", tags: ["lightning"] },
+        { category: "⚡ Lightning Network Wallets", name: "LNbits", url: "https://lnbits.com", tags: ["lightning", "opensource"] },
+        { category: "⚡ Lightning Network Wallets", name: "Cove", url: "https://covewallet.org", tags: ["lightning"] },
+        { category: "⚡ Lightning Network Wallets", name: "Lipa", url: "https://lipa.li", tags: ["lightning"] },
+        { category: "⚡ Lightning Network Wallets", name: "Joule (extension)", url: "https://lightningjoule.com", tags: ["lightning", "opensource"] },
+        { category: "⚡ Lightning Network Wallets", name: "LND Thin Wallet", url: "https://github.com/lightninglabs/lightning-app", tags: ["lightning", "opensource"] },
+        
+        // ========== 🌐 MULTICHAIN & WEB3 WALLETS ==========
+        { category: "🌐 Multichain & Web3 Wallets", name: "Trust Wallet", url: "https://trustwallet.com", tags: ["multichain", "popular"] },
+        { category: "🌐 Multichain & Web3 Wallets", name: "MetaMask", url: "https://metamask.io", tags: ["multichain", "popular", "evm"] },
+        { category: "🌐 Multichain & Web3 Wallets", name: "Coinbase Wallet", url: "https://wallet.coinbase.com", tags: ["multichain", "popular"] },
+        { category: "🌐 Multichain & Web3 Wallets", name: "Exodus", url: "https://exodus.com", tags: ["multichain", "popular"] },
+        { category: "🌐 Multichain & Web3 Wallets", name: "Phantom", url: "https://phantom.app", tags: ["multichain", "popular", "solana"] },
+        { category: "🌐 Multichain & Web3 Wallets", name: "Atomic Wallet", url: "https://atomicwallet.io", tags: ["multichain"] },
+        { category: "🌐 Multichain & Web3 Wallets", name: "Edge Wallet", url: "https://edge.app", tags: ["multichain"] },
+        { category: "🌐 Multichain & Web3 Wallets", name: "Zengo", url: "https://zengo.com", tags: ["multichain", "popular"] },
+        { category: "🌐 Multichain & Web3 Wallets", name: "Zerion", url: "https://zerion.io", tags: ["multichain", "defi"] },
+        { category: "🌐 Multichain & Web3 Wallets", name: "Best Wallet", url: "https://bestwallet.com", tags: ["multichain"] },
+        { category: "🌐 Multichain & Web3 Wallets", name: "Blockstream Green", url: "https://blockstream.com/green", tags: ["lightning", "multichain", "popular"] },
+        
+        // ========== ₿ BITCOIN ON-CHAIN WALLETS ==========
+        { category: "₿ Bitcoin On-Chain Wallets", name: "Electrum", url: "https://electrum.org", tags: ["opensource", "onchain", "popular"] },
+        { category: "₿ Bitcoin On-Chain Wallets", name: "Sparrow", url: "https://sparrowwallet.com", tags: ["opensource", "onchain"] },
+        { category: "₿ Bitcoin On-Chain Wallets", name: "Wasabi", url: "https://wasabiwallet.io", tags: ["opensource", "onchain", "privacy"] },
+        { category: "₿ Bitcoin On-Chain Wallets", name: "Samourai", url: "https://samouraiwallet.com", tags: ["opensource", "onchain", "privacy"] },
+        
+        // ========== 🔐 HARDWARE WALLETS ==========
+        { category: "🔐 Hardware Wallets", name: "Ledger", url: "https://www.ledger.com", tags: ["hardware", "popular"] },
+        { category: "🔐 Hardware Wallets", name: "Trezor", url: "https://trezor.io", tags: ["hardware", "popular", "opensource"] },
+        { category: "🔐 Hardware Wallets", name: "COLDCARD", url: "https://coinkite.com/colcard", tags: ["hardware", "popular", "opensource"] },
+        { category: "🔐 Hardware Wallets", name: "BitBox", url: "https://shiftcrypto.ch", tags: ["hardware", "opensource"] },
+        { category: "🔐 Hardware Wallets", name: "KEYSTONE", url: "https://keyst.one", tags: ["hardware", "popular"] },
+        { category: "🔐 Hardware Wallets", name: "OneKey", url: "https://onekey.so", tags: ["hardware"] },
+        { category: "🔐 Hardware Wallets", name: "ARCULUS", url: "https://arculus.co", tags: ["hardware"] },
+        { category: "🔐 Hardware Wallets", name: "tangem", url: "https://tangem.com", tags: ["hardware", "popular"] },
+        { category: "🔐 Hardware Wallets", name: "k", url: null, tags: ["hardware"] },
+        { category: "🔐 Hardware Wallets", name: "Keycard", url: "https://keycard.tech", tags: ["hardware"] },
+        { category: "🔐 Hardware Wallets", name: "SECUX", url: "https://secuxtech.com", tags: ["hardware"] },
+        { category: "🔐 Hardware Wallets", name: "SafePal", url: "https://www.safepal.com", tags: ["hardware"] },
+        { category: "🔐 Hardware Wallets", name: "KEESO", url: null, tags: ["hardware"] },
+        
+        // ========== 🔐 MULTISIG WALLETS ==========
+        { category: "🔐 Multisig Wallets", name: "Lily Wallet", url: "https://lilywallet.com", tags: ["multisig", "opensource"] },
+        { category: "🔐 Multisig Wallets", name: "Liana", url: "https://wizardsardine.com/liana", tags: ["multisig", "opensource"] },
+        { category: "🔐 Multisig Wallets", name: "SPECTER", url: "https://specter.solutions", tags: ["multisig", "opensource"] },
+        { category: "🔐 Multisig Wallets", name: "Caravan", url: "https://caravan.unchained.com", tags: ["multisig"] },
+        { category: "🔐 Multisig Wallets", name: "Keeper", url: "https://bitcoinkeeper.app", tags: ["multisig"] },
+        { category: "🔐 Multisig Wallets", name: "GUARDIAN", url: null, tags: ["multisig"] },
+        { category: "🔐 Multisig Wallets", name: "Unchained", url: "https://unchained.com", tags: ["multisig", "popular"] },
+        { category: "🔐 Multisig Wallets", name: "THEYA", url: "https://theya.io", tags: ["multisig"] }
     ];
 
     // Remover duplicatas (garantir que nomes iguais não se repitam)
