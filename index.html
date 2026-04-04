@@ -1,142 +1,273 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Ferramentas do Bitcoin | Diretório 2026</title>
-    <meta name="description" content="Diretório profissional das principais ferramentas Bitcoin: wallets, nodes, analytics, tax, multisig e muito mais. Com busca, filtros, modo escuro e suporte multilíngue.">
+    <meta name="theme-color" content="#F7931A" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F1419" media="(prefers-color-scheme: dark)">
+    
+    <!-- SEO & Metadata -->
+    <title>Ferramentas do Bitcoin | Diretório Profissional 2026</title>
+    <meta name="description" content="Diretório profissional das principais ferramentas Bitcoin: wallets, nodes, analytics, tax, multisig e muito mais. Com busca, filtros, modo escuro e visualização UTXO avançada.">
+    <meta name="keywords" content="Bitcoin, wallets, Lightning Network, nodes, UTXO, ferramentas Bitcoin, criptomoedas">
+    <meta name="author" content="Bitcoin Tools Directory">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://marcoscleber10.github.io/Ferramentas-bitcoin/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://marcoscleber10.github.io/Ferramentas-bitcoin/">
+    <meta property="og:title" content="Ferramentas do Bitcoin | Diretório Profissional 2026">
+    <meta property="og:description" content="Ecossistema completo de ferramentas Bitcoin com visualização UTXO avançada, filtros inteligentes e suporte multilíngue.">
+    <meta property="og:image" content="https://marcoscleber10.github.io/Ferramentas-bitcoin/og-image.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="ja_JP">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://marcoscleber10.github.io/Ferramentas-bitcoin/">
+    <meta property="twitter:title" content="Ferramentas do Bitcoin | Diretório Profissional 2026">
+    <meta property="twitter:description" content="Ecossistema completo de ferramentas Bitcoin com visualização UTXO avançada.">
+    <meta property="twitter:image" content="https://marcoscleber10.github.io/Ferramentas-bitcoin/twitter-image.jpg">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Bitcoin Tools">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="shortcut icon" href="icons/favicon.ico">
+    
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ferramentas do Bitcoin",
+        "url": "https://marcoscleber10.github.io/Ferramentas-bitcoin/",
+        "description": "Diretório profissional de ferramentas Bitcoin",
+        "inLanguage": ["pt-BR", "en-US", "es-ES", "ja-JP"],
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://marcoscleber10.github.io/Ferramentas-bitcoin/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
     <style>
         :root {
+            /* Cores Principais */
             --btc: #F7931A;
             --btc-dark: #e67e00;
-            --dark: #0F1419;
-            --dark-soft: #1e2a2b;
+            --btc-light: #ffb347;
+            
+            /* Modo Claro */
             --bg: #FAF8F5;
+            --bg-secondary: #F5F0EB;
             --card-bg: #FFFFFF;
             --border-light: #F0E4D4;
             --text-primary: #1A2C2E;
             --text-secondary: #5B6E6E;
-            --accent-neutral: #2C3E3B;
+            --text-tertiary: #8B9D9D;
+            
+            /* Cores UTXO */
+            --utxo-orange-bg: #FFF5EB;
+            --utxo-orange-border: #F7931A;
+            --utxo-orange-chunk: #F7931A;
+            --utxo-orange-chunk-empty: #FFE4CC;
+            --utxo-green-bg: #EBF5EE;
+            --utxo-green-border: #10B981;
+            --utxo-green-chunk: #10B981;
+            --utxo-green-chunk-empty: #D1FAE5;
+            
+            /* Badges */
             --badge-popular: #FFE6CC;
+            --badge-popular-text: #B45A0C;
             --badge-lightning: #FFF0DB;
+            --badge-lightning-text: #C45C0C;
             --badge-open: #E6F4EA;
+            --badge-open-text: #2C6E3C;
             --badge-hardware: #E9ECF5;
+            --badge-hardware-text: #1E3A6B;
             --badge-multisig: #E6E9F0;
+            --badge-multisig-text: #2C3E3B;
             --badge-multichain: #E3F2FD;
-            --shadow-sm: 0 8px 20px rgba(0,0,0,0.03), 0 0 0 1px rgba(247,147,26,0.1);
-            --shadow-md: 0 12px 28px rgba(0,0,0,0.05), 0 0 0 1px rgba(247,147,26,0.15);
-            --filter-bg: #f0e9e2;
-            --search-bg: #f5f2ef;
-            --placeholder-bg: #fefaf5;
-            --river-bg: var(--dark);
+            --badge-multichain-text: #0F5B7A;
+            --badge-new: #FEE2E2;
+            --badge-new-text: #DC2626;
+            
+            /* UI */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04), 0 0 0 1px rgba(247,147,26,0.08);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.06), 0 0 0 1px rgba(247,147,26,0.12);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.08), 0 0 0 1px rgba(247,147,26,0.15);
+            --filter-bg: #F0E9E2;
+            --search-bg: #F5F2EF;
+            --input-bg: #FAF8F5;
+            --hover-bg: #FEF7E8;
+            --active-bg: #FFE4CC;
+            
+            /* Transições */
+            --transition-fast: 150ms ease;
+            --transition-base: 250ms ease;
+            --transition-slow: 350ms ease;
         }
 
         body.dark {
+            /* Modo Escuro */
             --bg: #0F1419;
+            --bg-secondary: #1A1F26;
             --card-bg: #1A2629;
             --border-light: #2C3E3B;
             --text-primary: #EDF2F0;
             --text-secondary: #A0B3B0;
+            --text-tertiary: #6B7F7D;
+            
+            /* UTXO Dark */
+            --utxo-orange-bg: #2A1F15;
+            --utxo-orange-border: #F7931A;
+            --utxo-orange-chunk: #F7931A;
+            --utxo-orange-chunk-empty: #3A2A1A;
+            --utxo-green-bg: #1A2A20;
+            --utxo-green-border: #10B981;
+            --utxo-green-chunk: #10B981;
+            --utxo-green-chunk-empty: #1E3A2A;
+            
+            /* Badges Dark */
             --badge-popular: #3A2A1A;
+            --badge-popular-text: #FFAA66;
             --badge-lightning: #3A2A1A;
+            --badge-lightning-text: #FFAA66;
             --badge-open: #1E3A2A;
+            --badge-open-text: #8BC34A;
             --badge-hardware: #2A2A3A;
+            --badge-hardware-text: #90CAF9;
             --badge-multisig: #2A3538;
+            --badge-multisig-text: #B0BEC5;
             --badge-multichain: #1E2A3A;
-            --shadow-sm: 0 8px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(247,147,26,0.2);
-            --shadow-md: 0 12px 28px rgba(0,0,0,0.25), 0 0 0 1px rgba(247,147,26,0.25);
+            --badge-multichain-text: #81D4FA;
+            --badge-new: #3A1E1E;
+            --badge-new-text: #F87171;
+            
+            /* UI Dark */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.3), 0 0 0 1px rgba(247,147,26,0.15);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(247,147,26,0.2);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(247,147,26,0.25);
             --filter-bg: #2A3538;
             --search-bg: #1F2A2C;
-            --placeholder-bg: #1E2A2C;
-            --river-bg: #000000;
+            --input-bg: #1A2629;
+            --hover-bg: #2C3E3B;
+            --active-bg: #3A2A1A;
         }
 
-        * {
+        /* Reset & Base */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text-primary);
-            line-height: 1.4;
-            transition: background-color 0.2s, color 0.2s;
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.5;
+            transition: background-color var(--transition-base), color var(--transition-base);
+            overflow-x: hidden;
+        }
+
+        /* Skip to content (Acessibilidade) */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--btc);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Container */
         .container {
             max-width: 1440px;
             margin: 0 auto;
-            padding: 1.5rem 1.5rem 2.5rem;
+            padding: 1.5rem;
         }
 
-        .header-row {
+        @media (min-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+        }
+
+        /* Header */
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .dark-toggle {
-            background: var(--card-bg);
-            border: 1px solid var(--border-light);
-            border-radius: 40px;
-            padding: 0.4rem 1rem;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            color: var(--text-primary);
-        }
-
-        .dark-toggle:hover {
-            border-color: var(--btc);
-            background: var(--btc);
-            color: white;
-        }
-
-        .hero {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            padding: 0.5rem 0 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
             border-bottom: 1px solid var(--border-light);
         }
 
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--btc), #FFB347);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-        }
-
+        /* Language Switcher */
         .lang-switcher {
             display: flex;
             gap: 0.5rem;
+            flex-wrap: wrap;
         }
 
         .lang-btn {
             background: transparent;
             border: 1px solid var(--border-light);
-            padding: 0.3rem 0.8rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all var(--transition-fast);
             color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: var(--hover-bg);
+            border-color: var(--btc);
+            color: var(--btc-dark);
+        }
+
+        body.dark .lang-btn:hover:not(.active) {
+            background: var(--hover-bg);
+            color: var(--btc);
         }
 
         .lang-btn.active {
@@ -145,565 +276,2057 @@
             color: white;
         }
 
-        .lang-btn:hover:not(.active) {
-            background: #fff1e3;
-            color: var(--btc-dark);
+        .lang-btn:focus-visible {
+            outline: 2px solid var(--btc);
+            outline-offset: 2px;
         }
 
-        body.dark .lang-btn:hover:not(.active) {
-            background: #2C3E3B;
+        /* Dark Mode Toggle */
+        .dark-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 50px;
+            padding: 0.5rem 1.2rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all var(--transition-fast);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .dark-toggle:hover {
+            border-color: var(--btc);
+            background: var(--btc);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .dark-toggle:active {
+            transform: translateY(0);
+        }
+
+        .dark-toggle:focus-visible {
+            outline: 2px solid var(--btc);
+            outline-offset: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--btc) 0%, var(--btc-light) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 1rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--btc);
+            display: block;
         }
 
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Controls Section */
         .controls {
             background: var(--card-bg);
-            border-radius: 60px;
-            padding: 0.5rem 1rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-sm);
+            border-radius: 24px;
+            padding: 1.25rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-md);
             display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
             gap: 1rem;
         }
 
+        @media (min-width: 768px) {
+            .controls {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        /* Search Box */
+        .search-wrapper {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }
+
         .search-box {
-            flex: 2;
-            min-width: 200px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             background: var(--search-bg);
-            border-radius: 40px;
-            padding: 0.4rem 1rem;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            padding: 0.75rem 1.25rem;
+            transition: all var(--transition-fast);
+        }
+
+        .search-box:focus-within {
+            border-color: var(--btc);
+            background: var(--input-bg);
+            box-shadow: 0 0 0 4px rgba(247, 147, 26, 0.1);
+        }
+
+        .search-icon {
+            color: var(--text-tertiary);
+            font-size: 1.1rem;
         }
 
         .search-box input {
-            width: 100%;
+            flex: 1;
             background: transparent;
             border: none;
-            font-size: 0.9rem;
-            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            padding: 0.25rem 0;
             outline: none;
             font-family: inherit;
             color: var(--text-primary);
+            min-width: 0;
         }
 
-        .filter-tags {
+        .search-box input::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .search-clear {
+            background: none;
+            border: none;
+            color: var(--text-tertiary);
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .search-clear.visible {
             display: flex;
-            flex-wrap: wrap;
+        }
+
+        .search-clear:hover {
+            background: var(--hover-bg);
+            color: var(--text-primary);
+        }
+
+        /* Filter Tags */
+        .filter-wrapper {
+            display: flex;
             gap: 0.5rem;
+            flex-wrap: wrap;
             align-items: center;
         }
 
         .filter-chip {
             background: var(--filter-bg);
-            border: none;
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
+            border: 1px solid transparent;
+            padding: 0.5rem 1.1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all var(--transition-fast);
             color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .filter-chip:hover {
+            background: var(--hover-bg);
+            border-color: var(--border-light);
         }
 
         .filter-chip.active {
             background: var(--btc);
             color: white;
+            border-color: var(--btc);
         }
 
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 1.8rem;
+        .filter-chip:focus-visible {
+            outline: 2px solid var(--btc);
+            outline-offset: 2px;
         }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 28px;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.25s ease;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .card-header {
-            padding: 1.2rem 1.5rem 0.6rem;
-            border-bottom: 1px solid var(--border-light);
-            background: var(--card-bg);
-        }
-
-        .card-header h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            letter-spacing: -0.3px;
-        }
-
-        .card-header h2 span {
-            background: var(--btc);
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.15rem 0.6rem;
-            border-radius: 30px;
-        }
-
-        .tools-list {
-            padding: 1.2rem 1.5rem 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            align-items: center;
-        }
-
-        .tool-chip {
+        /* Advanced Filters Button */
+        .advanced-filters-btn {
             background: var(--card-bg);
             border: 1px solid var(--border-light);
-            padding: 0.45rem 1rem;
-            border-radius: 40px;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 500;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.2s;
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            transition: all var(--transition-fast);
         }
 
-        .tool-chip:hover {
-            background: #FEF7E8;
+        .advanced-filters-btn:hover {
             border-color: var(--btc);
             color: var(--btc-dark);
         }
 
-        body.dark .tool-chip:hover {
-            background: #2C3E3B;
+        body.dark .advanced-filters-btn:hover {
             color: var(--btc);
         }
 
-        .badges {
-            display: inline-flex;
+        /* Advanced Filters Panel */
+        .advanced-filters {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .advanced-filters.visible {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .filter-group select,
+        .filter-group input[type="range"] {
+            padding: 0.6rem;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: var(--btc);
+            box-shadow: 0 0 0 3px rgba(247, 147, 26, 0.1);
+        }
+
+        /* UTXO Visualizer Section */
+        .utxo-section {
+            background: var(--card-bg);
+            border-radius: 28px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .utxo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .utxo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .utxo-title-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--btc), var(--btc-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .utxo-total {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .utxo-total strong {
+            color: var(--btc);
+            font-weight: 700;
+        }
+
+        /* UTXO Cards */
+        .utxo-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .utxo-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .utxo-category {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 2px solid var(--border-light);
+        }
+
+        .utxo-category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .utxo-category-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .utxo-category.orange .utxo-category-title {
+            color: var(--btc-dark);
+        }
+
+        body.dark .utxo-category.orange .utxo-category-title {
+            color: var(--btc);
+        }
+
+        .utxo-category.green .utxo-category-title {
+            color: #059669;
+        }
+
+        body.dark .utxo-category.green .utxo-category-title {
+            color: #10B981;
+        }
+
+        .utxo-category-range {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            font-weight: 500;
+        }
+
+        .utxo-visualizer {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .utxo-bar-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .utxo-bar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .utxo-bar-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .utxo-bar-value {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--btc);
+        }
+
+        .utxo-chunks {
+            display: flex;
             gap: 4px;
-            margin-left: 4px;
+            height: 32px;
+        }
+
+        .utxo-chunk {
+            flex: 1;
+            border-radius: 4px;
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .utxo-chunk.filled {
+            background: var(--utxo-orange-chunk);
+        }
+
+        .utxo-chunk.empty {
+            background: var(--utxo-orange-chunk-empty);
+        }
+
+        .utxo-category.green .utxo-chunk.filled {
+            background: var(--utxo-green-chunk);
+        }
+
+        .utxo-category.green .utxo-chunk.empty {
+            background: var(--utxo-green-chunk-empty);
+        }
+
+        .utxo-chunk:hover {
+            transform: scaleY(1.1);
+            cursor: pointer;
+        }
+
+        .utxo-chunk-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-primary);
+            color: var(--bg);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition-fast);
+            margin-bottom: 4px;
+            z-index: 10;
+        }
+
+        .utxo-chunk:hover .utxo-chunk-tooltip {
+            opacity: 1;
+        }
+
+        .utxo-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1.8rem;
+        }
+
+        /* Card */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card.hidden {
+            display: none;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--card-bg) 100%);
+        }
+
+        .card-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--btc);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.3px;
+        }
+
+        .card-count {
+            background: var(--btc);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            margin-left: 0.5rem;
+        }
+
+        .tools-list {
+            padding: 1.25rem 1.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            flex: 1;
+        }
+
+        .tool-chip {
+            background: var(--card-bg);
+            border: 1.5px solid var(--border-light);
+            padding: 0.75rem 1rem;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-chip::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--btc);
+            transform: scaleY(0);
+            transition: transform var(--transition-fast);
+        }
+
+        .tool-chip:hover {
+            background: var(--hover-bg);
+            border-color: var(--btc);
+            transform: translateX(4px);
+        }
+
+        body.dark .tool-chip:hover {
+            background: var(--hover-bg);
+        }
+
+        .tool-chip:hover::before {
+            transform: scaleY(1);
+        }
+
+        .tool-chip:focus-visible {
+            outline: 2px solid var(--btc);
+            outline-offset: 2px;
+        }
+
+        .tool-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            flex: 1;
+        }
+
+        .tool-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .tool-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .tool-badges {
+            display: flex;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .badge {
-            font-size: 0.6rem;
-            font-weight: 600;
-            padding: 0.2rem 0.5rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
             border-radius: 20px;
-            background: #f0f0f0;
-            color: #3a4a4a;
             white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
 
-        .badge.popular { background: var(--badge-popular); color: #b45a0c; }
-        .badge.lightning { background: var(--badge-lightning); color: #c45c0c; }
-        .badge.opensource { background: var(--badge-open); color: #2c6e3c; }
-        .badge.hardware { background: var(--badge-hardware); color: #1e3a6b; }
-        .badge.multisig { background: var(--badge-multisig); color: #2c3e3b; }
-        .badge.multichain { background: var(--badge-multichain); color: #0f5b7a; }
-
-        body.dark .badge {
-            background: #2C3E3B;
-            color: #e0c8a0;
+        .badge.popular {
+            background: var(--badge-popular);
+            color: var(--badge-popular-text);
         }
-        body.dark .badge.popular { background: #3A2A1A; color: #ffaa66; }
-        body.dark .badge.lightning { background: #3A2A1A; color: #ffaa66; }
-        body.dark .badge.opensource { background: #1E3A2A; color: #8bc34a; }
-        body.dark .badge.hardware { background: #2A2A3A; color: #90caf9; }
-        body.dark .badge.multisig { background: #2A3538; color: #b0bec5; }
-        body.dark .badge.multichain { background: #1E2A3A; color: #81d4fa; }
 
+        .badge.lightning {
+            background: var(--badge-lightning);
+            color: var(--badge-lightning-text);
+        }
+
+        .badge.opensource {
+            background: var(--badge-open);
+            color: var(--badge-open-text);
+        }
+
+        .badge.hardware {
+            background: var(--badge-hardware);
+            color: var(--badge-hardware-text);
+        }
+
+        .badge.multisig {
+            background: var(--badge-multisig);
+            color: var(--badge-multisig-text);
+        }
+
+        .badge.multichain {
+            background: var(--badge-multichain);
+            color: var(--badge-multichain-text);
+        }
+
+        .badge.new {
+            background: var(--badge-new);
+            color: var(--badge-new-text);
+        }
+
+        .tool-favorite {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.4rem;
+            border-radius: 50%;
+            color: var(--text-tertiary);
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tool-favorite:hover {
+            background: var(--hover-bg);
+            color: var(--btc);
+        }
+
+        .tool-favorite.active {
+            color: var(--btc);
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+            grid-column: 1 / -1;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .no-results-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .no-results-text {
+            font-size: 0.95rem;
+        }
+
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border-light) 50%, var(--bg-secondary) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .toast {
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: slideInRight 0.3s ease;
+            max-width: 400px;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.success {
+            border-left: 4px solid #10B981;
+        }
+
+        .toast.error {
+            border-left: 4px solid #EF4444;
+        }
+
+        .toast.info {
+            border-left: 4px solid var(--btc);
+        }
+
+        .toast-icon {
+            font-size: 1.25rem;
+        }
+
+        .toast-message {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: var(--btc);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            background: var(--btc-dark);
+        }
+
+        .back-to-top:focus-visible {
+            outline: 3px solid white;
+            outline-offset: 2px;
+        }
+
+        /* Footer */
         footer {
-            margin-top: 3rem;
+            margin-top: 4rem;
             text-align: center;
             border-top: 1px solid var(--border-light);
-            padding-top: 1.8rem;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
+            padding: 2.5rem 0 2rem;
+        }
+
+        .footer-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.6rem;
+            gap: 1.25rem;
         }
 
         .river-badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: var(--river-bg);
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #0F1419 0%, #1A1F26 100%);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
             color: #ffcd94;
             font-weight: 600;
             text-decoration: none;
-            transition: 0.2s;
+            transition: all var(--transition-fast);
+            border: 1px solid rgba(247, 147, 26, 0.2);
         }
 
-        .no-results {
-            text-align: center;
-            padding: 3rem;
+        .river-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(247, 147, 26, 0.2);
+            border-color: var(--btc);
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
             color: var(--text-secondary);
-            font-size: 1.1rem;
-            grid-column: 1 / -1;
+            max-width: 600px;
+            line-height: 1.6;
         }
 
-        @media (max-width: 720px) {
-            .container { padding: 1rem; }
-            .hero h1 { font-size: 2rem; }
-            .controls { border-radius: 28px; flex-direction: column; align-items: stretch; }
-            .filter-tags { justify-content: center; }
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-link:hover {
+            color: var(--btc);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                padding: 1rem;
+            }
+
+            .search-wrapper {
+                min-width: 100%;
+            }
+
+            .utxo-section {
+                padding: 1.25rem;
+            }
+
+            .utxo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .toast-container {
+                left: 1rem;
+                right: 1rem;
+                bottom: 1rem;
+            }
+
+            .toast {
+                max-width: 100%;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --border-light: #000;
+                --text-secondary: #333;
+            }
+
+            body.dark {
+                --border-light: #fff;
+                --text-secondary: #ccc;
+            }
+
+            .tool-chip,
+            .card {
+                border-width: 2px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .controls,
+            .dark-toggle,
+            .back-to-top,
+            .toast-container {
+                display: none !important;
+            }
+
+            .card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #000;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-tertiary);
+        }
+
+        /* Selection */
+        ::selection {
+            background: rgba(247, 147, 26, 0.3);
+            color: var(--text-primary);
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header-row">
-        <div class="lang-switcher" id="langSwitcher">
-            <button data-lang="pt" class="lang-btn active">🇧🇷 PT</button>
-            <button data-lang="en" class="lang-btn">🇺🇸 EN</button>
-            <button data-lang="es" class="lang-btn">🇪🇸 ES</button>
-            <button data-lang="ja" class="lang-btn">🇯🇵 JP</button>
+    <!-- Skip to content for accessibility -->
+    <a href="#main-content" class="skip-link" data-i18n="skipToContent">Pular para conteúdo principal</a>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header" role="banner">
+            <div class="lang-switcher" role="group" aria-label="Seletor de idioma">
+                <button class="lang-btn active" data-lang="pt" aria-pressed="true" aria-label="Português">
+                    <span aria-hidden="true">🇧🇷</span> PT
+                </button>
+                <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English">
+                    <span aria-hidden="true">🇺🇸</span> EN
+                </button>
+                <button class="lang-btn" data-lang="es" aria-pressed="false" aria-label="Español">
+                    <span aria-hidden="true">🇪🇸</span> ES
+                </button>
+                <button class="lang-btn" data-lang="ja" aria-pressed="false" aria-label="日本語">
+                    <span aria-hidden="true">🇯</span> JP
+                </button>
+            </div>
+            
+            <button id="darkModeToggle" class="dark-toggle" aria-pressed="false" aria-label="Alternar modo escuro">
+                <span aria-hidden="true">🌙</span>
+                <span data-i18n="darkMode">Modo Escuro</span>
+            </button>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title" data-i18n="heroTitle">Ferramentas do Bitcoin</h1>
+            <p class="hero-subtitle" data-i18n="heroSubtitle">
+                Ecossistema completo de ferramentas profissionais para o universo Bitcoin
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-value" id="totalTools">0</span>
+                    <span class="stat-label" data-i18n="tools">ferramentas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="totalCategories">0</span>
+                    <span class="stat-label" data-i18n="categories">categorias</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">2026</span>
+                    <span class="stat-label" data-i18n="updated">atualizado</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls -->
+        <section class="controls" role="search" aria-label="Busca e filtros">
+            <div class="search-wrapper">
+                <div class="search-box">
+                    <span class="search-icon" aria-hidden="true">🔍</span>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Buscar ferramenta..." 
+                        autocomplete="off"
+                        aria-label="Buscar ferramentas"
+                        data-i18n-placeholder="searchPlaceholder"
+                    >
+                    <button class="search-clear" id="searchClear" aria-label="Limpar busca">
+                        <span aria-hidden="true">✕</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="filter-wrapper">
+                <button class="advanced-filters-btn" id="advancedFiltersBtn" aria-expanded="false">
+                    <span aria-hidden="true">⚙️</span>
+                    <span data-i18n="advancedFilters">Filtros Avançados</span>
+                </button>
+                <div id="filterTagsContainer" role="group" aria-label="Filtros rápidos"></div>
+            </div>
+        </section>
+
+        <!-- Advanced Filters Panel -->
+        <section class="advanced-filters" id="advancedFilters" aria-label="Filtros avançados" hidden>
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="platformFilter" data-i18n="platform">Plataforma</label>
+                    <select id="platformFilter">
+                        <option value="" data-i18n="allPlatforms">Todas</option>
+                        <option value="ios">iOS</option>
+                        <option value="android">Android</option>
+                        <option value="desktop">Desktop</option>
+                        <option value="web">Web</option>
+                        <option value="hardware">Hardware</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="priceFilter" data-i18n="price">Preço</label>
+                    <select id="priceFilter">
+                        <option value="" data-i18n="allPrices">Todos</option>
+                        <option value="free" data-i18n="free">Gratuito</option>
+                        <option value="paid" data-i18n="paid">Pago</option>
+                        <option value="freemium" data-i18n="freemium">Freemium</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sortFilter" data-i18n="sortBy">Ordenar por</label>
+                    <select id="sortFilter">
+                        <option value="name" data-i18n="sortName">Nome</option>
+                        <option value="popular" data-i18n="sortPopular">Popularidade</option>
+                        <option value="newest" data-i18n="sortNewest">Mais recentes</option>
+                        <option value="updated" data-i18n="sortUpdated">Última atualização</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- UTXO Visualizer -->
+        <section class="utxo-section" aria-labelledby="utxo-title">
+            <div class="utxo-header">
+                <h2 id="utxo-title" class="utxo-title">
+                    <span class="utxo-title-icon" aria-hidden="true">₿</span>
+                    <span data-i18n="utxoVisualizer">Visualizador UTXO</span>
+                </h2>
+                <div class="utxo-total">
+                    <span data-i18n="utxoTotal">Total:</span> <strong id="utxoTotalValue">0 sats</strong>
+                </div>
+            </div>
+            
+            <div class="utxo-grid">
+                <!-- Orange UTXOs (100K - 1.1M sats) -->
+                <div class="utxo-category orange">
+                    <div class="utxo-category-header">
+                        <h3 class="utxo-category-title">
+                            <span aria-hidden="true">🟠</span>
+                            <span data-i18n="utxoOrange">Orange</span>
+                        </h3>
+                        <span class="utxo-category-range" data-i18n="utxoOrangeRange">100K - 1.1M sats</span>
+                    </div>
+                    <div class="utxo-visualizer" id="utxoOrangeContainer">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+                
+                <!-- Green UTXOs (1.1M - 11M sats) -->
+                <div class="utxo-category green">
+                    <div class="utxo-category-header">
+                        <h3 class="utxo-category-title">
+                            <span aria-hidden="true">🟢</span>
+                            <span data-i18n="utxoGreen">Green</span>
+                        </h3>
+                        <span class="utxo-category-range" data-i18n="utxoGreenRange">1.1M - 11M sats</span>
+                    </div>
+                    <div class="utxo-visualizer" id="utxoGreenContainer">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main id="main-content" class="categories-grid" role="main" aria-live="polite" aria-busy="false">
+            <!-- Dynamic content will be inserted here -->
+        </main>
+
+        <!-- No Results -->
+        <div class="no-results" id="noResults" hidden>
+            <div class="no-results-icon" aria-hidden="true">🔍</div>
+            <h3 class="no-results-title" data-i18n="noResultsTitle">Nenhum resultado encontrado</h3>
+            <p class="no-results-text" data-i18n="noResultsText">Tente ajustar os filtros ou buscar com outros termos</p>
         </div>
-        <button id="darkModeToggle" class="dark-toggle">🌙 Modo Escuro</button>
     </div>
 
-    <div class="hero">
-        <h1 id="heroTitle">Ferramentas do Bitcoin</h1>
-        <p id="heroSub" style="margin-top: 0.5rem; color: var(--text-secondary);">Ecossistema completo · 2026</p>
-    </div>
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <span aria-hidden="true">↑</span>
+    </button>
 
-    <div class="controls">
-        <div class="search-box">
-            <span>🔍</span>
-            <input type="text" id="searchInput" placeholder="Buscar ferramenta..." autocomplete="off">
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <a href="https://river.com" target="_blank" rel="noopener noreferrer" class="river-badge">
+                <span aria-hidden="true">⚡</span>
+                <span>RIVER · Bitcoin Financial Platform</span>
+            </a>
+            
+            <div class="footer-links">
+                <a href="#" class="footer-link" data-i18n="about">Sobre</a>
+                <a href="#" class="footer-link" data-i18n="contribute">Contribuir</a>
+                <a href="#" class="footer-link" data-i18n="privacy">Privacidade</a>
+                <a href="#" class="footer-link" data-i18n="contact">Contato</a>
+            </div>
+            
+            <p class="footer-text" data-i18n="footerText">
+                📡 Diretório independente — marcas pertencem aos respectivos projetos. 
+                Atualizado constantemente pela comunidade Bitcoin.
+            </p>
         </div>
-        <div class="filter-tags" id="filterTagsContainer"></div>
-    </div>
-
-    <div class="categories-grid" id="toolsGrid"></div>
-
-    <footer>
-        <a href="https://river.com" target="_blank" rel="noopener noreferrer" class="river-badge">
-            <span>⚡</span> RIVER · Bitcoin Financial Platform
-        </a>
-        <div class="attribution">📡 Diretório independente — marcas pertencem aos respectivos projetos.</div>
     </footer>
-</div>
 
-<script>
-    // ==================== ESTRUTURA REORGANIZADA ====================
-    // Categorias conforme recomendação profissional
-    const toolsData = [
-        // ========== DIRETÓRIOS ==========
-        { category: "📁 Diretórios", name: "BTCMap.org", url: "https://btcmap.org", tags: ["onchain", "lightning"] },
-        { category: "📁 Diretórios", name: "bitcoin_travel", url: "https://bitcoin.travel", tags: ["merchant"] },
-        { category: "📁 Diretórios", name: "spendabit", url: "https://spendabit.co", tags: ["commerce"] },
-        { category: "📁 Diretórios", name: "BitcoinJobs", url: "https://bitcoinjobs.co", tags: ["career"] },
-        
-        // ========== DATA & ANALYTICS ==========
-        { category: "📊 Data & analytics", name: "Ownership", url: "https://bitinfocharts.com/top-100-richest-bitcoin-addresses.html", tags: ["analytics"] },
-        { category: "📊 Data & analytics", name: "BITCOINTREASURIESNET", url: "https://bitcointreasuries.net", tags: ["institutional"] },
-        { category: "📊 Data & analytics", name: "Timechain Index", url: "https://timechainindex.com", tags: ["metrics"] },
-        
-        // ========== NODE SOFTWARE ==========
-        { category: "🖥️ Node software & setup", name: "umbrel", url: "https://umbrel.com", tags: ["opensource", "node"] },
-        { category: "🖥️ Node software & setup", name: "Bitcoin Machine", url: "https://coinkite.com/bitcoin-machine", tags: ["hardware", "node"] },
-        { category: "🖥️ Node software & setup", name: "MYNODE", url: "https://mynodebtc.com", tags: ["node", "opensource"] },
-        { category: "🖥️ Node software & setup", name: "RASP|BLITZ", url: "https://raspiblitz.com", tags: ["opensource", "node"] },
-        { category: "🖥️ Node software & setup", name: "START9", url: "https://start9.com", tags: ["opensource", "node"] },
-        { category: "🖥️ Node software & setup", name: "CUBE", url: "https://cube.bitcoin", tags: ["node", "hardware"] },
-        
-        // ========== TAX ACCOUNTING ==========
-        { category: "📑 Tax accounting", name: "Koinly", url: "https://koinly.io", tags: ["tax"] },
-        { category: "📑 Tax accounting", name: "CoinLedger", url: "https://coinledger.io", tags: ["tax"] },
-        { category: "📑 Tax accounting", name: "TokenTax", url: "https://tokentax.co", tags: ["tax"] },
-        { category: "📑 Tax accounting", name: "CoinTracker", url: "https://cointracker.io", tags: ["tax"] },
-        
-        // ========== OTHER ==========
-        { category: "⚡ Other", name: "STACKER NEWS", url: "https://stacker.news", tags: ["social"] },
-        
-        // ========== ⚡ LIGHTNING NETWORK WALLETS (Especializadas) ==========
-        { category: "⚡ Lightning Network Wallets", name: "Phoenix", url: "https://phoenix.acinq.co", tags: ["lightning", "popular", "opensource"] },
-        { category: "⚡ Lightning Network Wallets", name: "Breez", url: "https://breez.technology", tags: ["lightning", "opensource"] },
-        { category: "⚡ Lightning Network Wallets", name: "Muun", url: "https://muun.com", tags: ["lightning", "popular"] },
-        { category: "⚡ Lightning Network Wallets", name: "Zeus", url: "https://zeusln.com", tags: ["lightning", "opensource"] },
-        { category: "⚡ Lightning Network Wallets", name: "Alby", url: "https://getalby.com", tags: ["lightning", "opensource"] },
-        { category: "⚡ Lightning Network Wallets", name: "Blixt", url: "https://blixtwallet.github.io", tags: ["lightning", "opensource"] },
-        { category: "⚡ Lightning Network Wallets", name: "BlueWallet (Lightning)", url: "https://bluewallet.io", tags: ["lightning", "opensource", "popular"] },
-        { category: "⚡ Lightning Network Wallets", name: "Wallet of Satoshi", url: "https://play.google.com/store/apps/details?id=com.livingroomofsatoshi.wallet", tags: ["lightning", "popular"] },
-        { category: "⚡ Lightning Network Wallets", name: "Strike", url: "https://strike.me", tags: ["lightning", "popular"] },
-        { category: "⚡ Lightning Network Wallets", name: "Blink", url: "https://blink.sv", tags: ["lightning", "popular"] },
-        { category: "⚡ Lightning Network Wallets", name: "Eclair Mobile", url: "https://eclair.acinq.co", tags: ["lightning", "opensource"] },
-        { category: "⚡ Lightning Network Wallets", name: "Zap", url: "https://zap.jackmallers.com", tags: ["lightning"] },
-        { category: "⚡ Lightning Network Wallets", name: "Speed Wallet", url: "https://speedwallet.com", tags: ["lightning"] },
-        { category: "⚡ Lightning Network Wallets", name: "CoinOS Lightning", url: "https://coinos.io", tags: ["lightning", "web"] },
-        { category: "⚡ Lightning Network Wallets", name: "Bitkit", url: "https://bitkit.to", tags: ["lightning", "opensource"] },
-        { category: "⚡ Lightning Network Wallets", name: "Minibits", url: "https://minibits.cash", tags: ["lightning", "ecash"] },
-        { category: "⚡ Lightning Network Wallets", name: "Moon Wallet", url: "https://moon.io", tags: ["lightning"] },
-        { category: "⚡ Lightning Network Wallets", name: "LNbits", url: "https://lnbits.com", tags: ["lightning", "opensource"] },
-        { category: "⚡ Lightning Network Wallets", name: "Cove", url: "https://covewallet.org", tags: ["lightning"] },
-        { category: "⚡ Lightning Network Wallets", name: "Lipa", url: "https://lipa.li", tags: ["lightning"] },
-        { category: "⚡ Lightning Network Wallets", name: "Joule (extension)", url: "https://lightningjoule.com", tags: ["lightning", "opensource"] },
-        { category: "⚡ Lightning Network Wallets", name: "LND Thin Wallet", url: "https://github.com/lightninglabs/lightning-app", tags: ["lightning", "opensource"] },
-        
-        // ========== 🌐 MULTICHAIN & WEB3 WALLETS ==========
-        { category: "🌐 Multichain & Web3 Wallets", name: "Trust Wallet", url: "https://trustwallet.com", tags: ["multichain", "popular"] },
-        { category: "🌐 Multichain & Web3 Wallets", name: "MetaMask", url: "https://metamask.io", tags: ["multichain", "popular", "evm"] },
-        { category: "🌐 Multichain & Web3 Wallets", name: "Coinbase Wallet", url: "https://wallet.coinbase.com", tags: ["multichain", "popular"] },
-        { category: "🌐 Multichain & Web3 Wallets", name: "Exodus", url: "https://exodus.com", tags: ["multichain", "popular"] },
-        { category: "🌐 Multichain & Web3 Wallets", name: "Phantom", url: "https://phantom.app", tags: ["multichain", "popular", "solana"] },
-        { category: "🌐 Multichain & Web3 Wallets", name: "Atomic Wallet", url: "https://atomicwallet.io", tags: ["multichain"] },
-        { category: "🌐 Multichain & Web3 Wallets", name: "Edge Wallet", url: "https://edge.app", tags: ["multichain"] },
-        { category: "🌐 Multichain & Web3 Wallets", name: "Zengo", url: "https://zengo.com", tags: ["multichain", "popular"] },
-        { category: "🌐 Multichain & Web3 Wallets", name: "Zerion", url: "https://zerion.io", tags: ["multichain", "defi"] },
-        { category: "🌐 Multichain & Web3 Wallets", name: "Best Wallet", url: "https://bestwallet.com", tags: ["multichain"] },
-        { category: "🌐 Multichain & Web3 Wallets", name: "Blockstream Green", url: "https://blockstream.com/green", tags: ["lightning", "multichain", "popular"] },
-        
-        // ========== ₿ BITCOIN ON-CHAIN WALLETS ==========
-        { category: "₿ Bitcoin On-Chain Wallets", name: "Electrum", url: "https://electrum.org", tags: ["opensource", "onchain", "popular"] },
-        { category: "₿ Bitcoin On-Chain Wallets", name: "Sparrow", url: "https://sparrowwallet.com", tags: ["opensource", "onchain"] },
-        { category: "₿ Bitcoin On-Chain Wallets", name: "Wasabi", url: "https://wasabiwallet.io", tags: ["opensource", "onchain", "privacy"] },
-        { category: "₿ Bitcoin On-Chain Wallets", name: "Samourai", url: "https://samouraiwallet.com", tags: ["opensource", "onchain", "privacy"] },
-        
-        // ========== 🔐 HARDWARE WALLETS ==========
-        { category: "🔐 Hardware Wallets", name: "Ledger", url: "https://www.ledger.com", tags: ["hardware", "popular"] },
-        { category: "🔐 Hardware Wallets", name: "Trezor", url: "https://trezor.io", tags: ["hardware", "popular", "opensource"] },
-        { category: "🔐 Hardware Wallets", name: "COLDCARD", url: "https://coinkite.com/colcard", tags: ["hardware", "popular", "opensource"] },
-        { category: "🔐 Hardware Wallets", name: "BitBox", url: "https://shiftcrypto.ch", tags: ["hardware", "opensource"] },
-        { category: "🔐 Hardware Wallets", name: "KEYSTONE", url: "https://keyst.one", tags: ["hardware", "popular"] },
-        { category: "🔐 Hardware Wallets", name: "OneKey", url: "https://onekey.so", tags: ["hardware"] },
-        { category: "🔐 Hardware Wallets", name: "ARCULUS", url: "https://arculus.co", tags: ["hardware"] },
-        { category: "🔐 Hardware Wallets", name: "tangem", url: "https://tangem.com", tags: ["hardware", "popular"] },
-        { category: "🔐 Hardware Wallets", name: "k", url: null, tags: ["hardware"] },
-        { category: "🔐 Hardware Wallets", name: "Keycard", url: "https://keycard.tech", tags: ["hardware"] },
-        { category: "🔐 Hardware Wallets", name: "SECUX", url: "https://secuxtech.com", tags: ["hardware"] },
-        { category: "🔐 Hardware Wallets", name: "SafePal", url: "https://www.safepal.com", tags: ["hardware"] },
-        { category: "🔐 Hardware Wallets", name: "KEESO", url: null, tags: ["hardware"] },
-        
-        // ========== 🔐 MULTISIG WALLETS ==========
-        { category: "🔐 Multisig Wallets", name: "Lily Wallet", url: "https://lilywallet.com", tags: ["multisig", "opensource"] },
-        { category: "🔐 Multisig Wallets", name: "Liana", url: "https://wizardsardine.com/liana", tags: ["multisig", "opensource"] },
-        { category: "🔐 Multisig Wallets", name: "SPECTER", url: "https://specter.solutions", tags: ["multisig", "opensource"] },
-        { category: "🔐 Multisig Wallets", name: "Caravan", url: "https://caravan.unchained.com", tags: ["multisig"] },
-        { category: "🔐 Multisig Wallets", name: "Keeper", url: "https://bitcoinkeeper.app", tags: ["multisig"] },
-        { category: "🔐 Multisig Wallets", name: "GUARDIAN", url: null, tags: ["multisig"] },
-        { category: "🔐 Multisig Wallets", name: "Unchained", url: "https://unchained.com", tags: ["multisig", "popular"] },
-        { category: "🔐 Multisig Wallets", name: "THEYA", url: "https://theya.io", tags: ["multisig"] }
-    ];
-
-    // Remover duplicatas (garantir que nomes iguais não se repitam)
-    const uniqueTools = [];
-    const seen = new Set();
-    for (const tool of toolsData) {
-        const key = `${tool.category}|${tool.name}`;
-        if (!seen.has(key)) {
-            seen.add(key);
-            uniqueTools.push(tool);
-        }
-    }
-
-    // ----------------------------- TRADUÇÕES -----------------------------
-    const translations = {
-        pt: {
-            heroTitle: "Ferramentas do Bitcoin",
-            heroSub: "Ecossistema completo · 2026",
-            searchPlaceholder: "Buscar ferramenta...",
-            filters: { all: "Todos", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain", multichain: "🌐 Multi-chain" },
-            noResults: "Nenhuma ferramenta encontrada 😢",
-            darkMode: "🌙 Modo Escuro",
-            lightMode: "☀️ Modo Claro"
-        },
-        en: {
-            heroTitle: "Bitcoin Tools",
-            heroSub: "Complete ecosystem · 2026",
-            searchPlaceholder: "Search tool...",
-            filters: { all: "All", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain", multichain: "🌐 Multi-chain" },
-            noResults: "No tools found 😢",
-            darkMode: "🌙 Dark Mode",
-            lightMode: "☀️ Light Mode"
-        },
-        es: {
-            heroTitle: "Herramientas de Bitcoin",
-            heroSub: "Ecosistema completo · 2026",
-            searchPlaceholder: "Buscar herramienta...",
-            filters: { all: "Todos", lightning: "⚡ Lightning", hardware: "🔒 Hardware", multisig: "🔐 Multisig", opensource: "🖧 Open Source", onchain: "⛓️ On-chain", multichain: "🌐 Multi-chain" },
-            noResults: "No se encontraron herramientas 😢",
-            darkMode: "🌙 Modo Oscuro",
-            lightMode: "☀️ Modo Claro"
-        },
-        ja: {
-            heroTitle: "ビットコインツール",
-            heroSub: "完全なエコシステム · 2026",
-            searchPlaceholder: "ツールを検索...",
-            filters: { all: "すべて", lightning: "⚡ ライトニング", hardware: "🔒 ハードウェア", multisig: "🔐 マルチシグ", opensource: "🖧 オープンソース", onchain: "⛓️ オンチェーン", multichain: "🌐 マルチチェーン" },
-            noResults: "ツールが見つかりません 😢",
-            darkMode: "🌙 ダークモード",
-            lightMode: "☀️ ライトモード"
-        }
-    };
-
-    let currentLang = "pt";
-    let activeFilter = "all";
-    let searchTerm = "";
-
-    function t(key) {
-        const keys = key.split('.');
-        let val = translations[currentLang];
-        for (let k of keys) val = val?.[k];
-        return val || key;
-    }
-
-    function render() {
-        const grid = document.getElementById("toolsGrid");
-        if (!grid) return;
-
-        let filtered = uniqueTools.filter(tool => {
-            const matchSearch = searchTerm === "" || tool.name.toLowerCase().includes(searchTerm.toLowerCase());
-            if (!matchSearch) return false;
-            if (activeFilter === "all") return true;
-            return tool.tags && tool.tags.includes(activeFilter);
-        });
-
-        const grouped = {};
-        for (const tool of filtered) {
-            if (!grouped[tool.category]) grouped[tool.category] = [];
-            grouped[tool.category].push(tool);
-        }
-
-        if (Object.keys(grouped).length === 0) {
-            grid.innerHTML = `<div class="no-results">${t('noResults')}</div>`;
-            return;
-        }
-
-        let html = "";
-        for (const [cat, tools] of Object.entries(grouped)) {
-            html += `<div class="card">
-                        <div class="card-header">
-                            <h2>${cat} <span>${tools.length}</span></h2>
-                        </div>
-                        <div class="tools-list">`;
-            for (const tool of tools) {
-                const url = tool.url;
-                const isPlaceholder = !url;
-                const linkAttrs = isPlaceholder ? 'href="javascript:void(0)" class="tool-chip placeholder-link"' : `href="${url}" target="_blank" rel="noopener noreferrer" class="tool-chip"`;
-                let badgesHtml = "";
-                if (tool.tags) {
-                    if (tool.tags.includes("popular")) badgesHtml += `<span class="badge popular">⭐ Popular</span>`;
-                    if (tool.tags.includes("lightning")) badgesHtml += `<span class="badge lightning">⚡ Lightning</span>`;
-                    if (tool.tags.includes("opensource")) badgesHtml += `<span class="badge opensource">🖧 Open Source</span>`;
-                    if (tool.tags.includes("hardware")) badgesHtml += `<span class="badge hardware">🔒 Hardware</span>`;
-                    if (tool.tags.includes("multisig")) badgesHtml += `<span class="badge multisig">🔐 Multisig</span>`;
-                    if (tool.tags.includes("multichain")) badgesHtml += `<span class="badge multichain">🌐 Multi‑chain</span>`;
-                }
-                html += `<a ${linkAttrs}><span>₿</span> ${tool.name}<div class="badges">${badgesHtml}</div></a>`;
+    <!-- Translations -->
+    <script>
+        const translations = {
+            pt: {
+                skipToContent: "Pular para conteúdo principal",
+                darkMode: "Modo Escuro",
+                lightMode: "Modo Claro",
+                heroTitle: "Ferramentas do Bitcoin",
+                heroSubtitle: "Ecossistema completo de ferramentas profissionais para o universo Bitcoin",
+                tools: "ferramentas",
+                categories: "categorias",
+                updated: "atualizado",
+                searchPlaceholder: "Buscar ferramenta...",
+                advancedFilters: "Filtros Avançados",
+                platform: "Plataforma",
+                allPlatforms: "Todas",
+                price: "Preço",
+                allPrices: "Todos",
+                free: "Gratuito",
+                paid: "Pago",
+                freemium: "Freemium",
+                sortBy: "Ordenar por",
+                sortName: "Nome",
+                sortPopular: "Popularidade",
+                sortNewest: "Mais recentes",
+                sortUpdated: "Última atualização",
+                utxoVisualizer: "Visualizador UTXO",
+                utxoTotal: "Total:",
+                utxoOrange: "Orange",
+                utxoOrangeRange: "100K - 1.1M sats",
+                utxoGreen: "Green",
+                utxoGreenRange: "1.1M - 11M sats",
+                utxoChunk: "Chunk",
+                noResultsTitle: "Nenhum resultado encontrado",
+                noResultsText: "Tente ajustar os filtros ou buscar com outros termos",
+                about: "Sobre",
+                contribute: "Contribuir",
+                privacy: "Privacidade",
+                contact: "Contato",
+                footerText: "📡 Diretório independente — marcas pertencem aos respectivos projetos. Atualizado constantemente pela comunidade Bitcoin.",
+                copiedToClipboard: "Link copiado para a área de transferência!",
+                addedToFavorites: "Adicionado aos favoritos",
+                removedFromFavorites: "Removido dos favoritos",
+                favoriteTools: "Favoritos",
+                loading: "Carregando...",
+                eachChunk: "Cada chunk = {value}",
+                sats: "sats"
+            },
+            en: {
+                skipToContent: "Skip to main content",
+                darkMode: "Dark Mode",
+                lightMode: "Light Mode",
+                heroTitle: "Bitcoin Tools",
+                heroSubtitle: "Complete ecosystem of professional tools for the Bitcoin universe",
+                tools: "tools",
+                categories: "categories",
+                updated: "updated",
+                searchPlaceholder: "Search tools...",
+                advancedFilters: "Advanced Filters",
+                platform: "Platform",
+                allPlatforms: "All",
+                price: "Price",
+                allPrices: "All",
+                free: "Free",
+                paid: "Paid",
+                freemium: "Freemium",
+                sortBy: "Sort by",
+                sortName: "Name",
+                sortPopular: "Popularity",
+                sortNewest: "Newest",
+                sortUpdated: "Last updated",
+                utxoVisualizer: "UTXO Visualizer",
+                utxoTotal: "Total:",
+                utxoOrange: "Orange",
+                utxoOrangeRange: "100K - 1.1M sats",
+                utxoGreen: "Green",
+                utxoGreenRange: "1.1M - 11M sats",
+                utxoChunk: "Chunk",
+                noResultsTitle: "No results found",
+                noResultsText: "Try adjusting filters or searching with different terms",
+                about: "About",
+                contribute: "Contribute",
+                privacy: "Privacy",
+                contact: "Contact",
+                footerText: "📡 Independent directory — brands belong to their respective projects. Constantly updated by the Bitcoin community.",
+                copiedToClipboard: "Link copied to clipboard!",
+                addedToFavorites: "Added to favorites",
+                removedFromFavorites: "Removed from favorites",
+                favoriteTools: "Favorites",
+                loading: "Loading...",
+                eachChunk: "Each chunk = {value}",
+                sats: "sats"
+            },
+            es: {
+                skipToContent: "Saltar al contenido principal",
+                darkMode: "Modo Oscuro",
+                lightMode: "Modo Claro",
+                heroTitle: "Herramientas Bitcoin",
+                heroSubtitle: "Ecosistema completo de herramientas profesionales para el universo Bitcoin",
+                tools: "herramientas",
+                categories: "categorías",
+                updated: "actualizado",
+                searchPlaceholder: "Buscar herramienta...",
+                advancedFilters: "Filtros Avanzados",
+                platform: "Plataforma",
+                allPlatforms: "Todas",
+                price: "Precio",
+                allPrices: "Todos",
+                free: "Gratuito",
+                paid: "Pago",
+                freemium: "Freemium",
+                sortBy: "Ordenar por",
+                sortName: "Nombre",
+                sortPopular: "Popularidad",
+                sortNewest: "Más recientes",
+                sortUpdated: "Última actualización",
+                utxoVisualizer: "Visualizador UTXO",
+                utxoTotal: "Total:",
+                utxoOrange: "Orange",
+                utxoOrangeRange: "100K - 1.1M sats",
+                utxoGreen: "Green",
+                utxoGreenRange: "1.1M - 11M sats",
+                utxoChunk: "Chunk",
+                noResultsTitle: "No se encontraron resultados",
+                noResultsText: "Intenta ajustar los filtros o buscar con otros términos",
+                about: "Acerca de",
+                contribute: "Contribuir",
+                privacy: "Privacidad",
+                contact: "Contacto",
+                footerText: "📡 Directorio independiente — las marcas pertenecen a sus respectivos proyectos. Actualizado constantemente por la comunidad Bitcoin.",
+                copiedToClipboard: "¡Enlace copiado al portapapeles!",
+                addedToFavorites: "Añadido a favoritos",
+                removedFromFavorites: "Eliminado de favoritos",
+                favoriteTools: "Favoritos",
+                loading: "Cargando...",
+                eachChunk: "Cada chunk = {value}",
+                sats: "sats"
+            },
+            ja: {
+                skipToContent: "メインコンテンツにスキップ",
+                darkMode: "ダークモード",
+                lightMode: "ライトモード",
+                heroTitle: "ビットコインツール",
+                heroSubtitle: "ビットコイン宇宙のためのプロフェッショナルツールの完全なエコシステム",
+                tools: "ツール",
+                categories: "カテゴリ",
+                updated: "更新",
+                searchPlaceholder: "ツールを検索...",
+                advancedFilters: "詳細フィルター",
+                platform: "プラットフォーム",
+                allPlatforms: "すべて",
+                price: "価格",
+                allPrices: "すべて",
+                free: "無料",
+                paid: "有料",
+                freemium: "フリーミアム",
+                sortBy: "並べ替え",
+                sortName: "名前",
+                sortPopular: "人気",
+                sortNewest: "最新",
+                sortUpdated: "最終更新",
+                utxoVisualizer: "UTXOビジュアライザー",
+                utxoTotal: "合計:",
+                utxoOrange: "オレンジ",
+                utxoOrangeRange: "100K - 1.1M sats",
+                utxoGreen: "グリーン",
+                utxoGreenRange: "1.1M - 11M sats",
+                utxoChunk: "チャンク",
+                noResultsTitle: "結果が見つかりません",
+                noResultsText: "フィルターを調整するか、別の用語で検索してください",
+                about: "について",
+                contribute: "貢献",
+                privacy: "プライバシー",
+                contact: "連絡先",
+                footerText: "📡 独立ディレクトリ — ブランドはそれぞれのプロジェクトに属します。ビットコインコミュニティによって常に更新されています。",
+                copiedToClipboard: "リンクをクリップボードにコピーしました！",
+                addedToFavorites: "お気に入りに追加",
+                removedFromFavorites: "お気に入りから削除",
+                favoriteTools: "お気に入り",
+                loading: "読み込み中...",
+                eachChunk: "各チャンク = {value}",
+                sats: "sats"
             }
-            html += `</div></div>`;
-        }
-        grid.innerHTML = html;
-        document.querySelectorAll('.placeholder-link').forEach(el => {
-            el.setAttribute('title', 'Link oficial não disponível no momento');
-        });
-    }
+        };
 
-    function updateUITexts() {
-        document.getElementById("heroTitle").innerText = t('heroTitle');
-        document.getElementById("heroSub").innerText = t('heroSub');
-        const searchInput = document.getElementById("searchInput");
-        if (searchInput) searchInput.placeholder = t('searchPlaceholder');
+        // Tools Data
+        const toolsData = [
+            // Diretórios
+            { category: "📁 Diretórios", name: "BTCMap.org", url: "https://btcmap.org", desc: "Mapa global de comerciantes Bitcoin", tags: ["onchain", "lightning", "popular"], platform: "web", price: "free" },
+            { category: "📁 Diretórios", name: "bitcoin.travel", url: "https://bitcoin.travel", desc: "Encontre lugares que aceitam Bitcoin", tags: ["merchant", "travel"], platform: "web", price: "free" },
+            { category: "📁 Diretórios", name: "spendabit", url: "https://spendabit.co", desc: "Motor de busca de comércio Bitcoin", tags: ["commerce", "search"], platform: "web", price: "free" },
+            { category: "📁 Diretórios", name: "BitcoinJobs", url: "https://bitcoinjobs.co", desc: "Empregos na indústria Bitcoin", tags: ["career", "jobs"], platform: "web", price: "free" },
+            
+            // Data & Analytics
+            { category: "📊 Data & Analytics", name: "Bitinfocharts", url: "https://bitinfocharts.com", desc: "Estatísticas e métricas da rede", tags: ["analytics", "metrics", "popular"], platform: "web", price: "free" },
+            { category: "📊 Data & Analytics", name: "BitcoinTreasuries", url: "https://bitcointreasuries.net", desc: "Empresas e governos com Bitcoin", tags: ["institutional", "data"], platform: "web", price: "free" },
+            { category: "📊 Data & Analytics", name: "Timechain Index", url: "https://timechainindex.com", desc: "Índices e métricas temporais", tags: ["metrics", "analytics"], platform: "web", price: "free" },
+            { category: "📊 Data & Analytics", name: "Mempool.space", url: "https://mempool.space", desc: "Explorador de blocos e mempool", tags: ["analytics", "explorer", "popular", "opensource"], platform: "web", price: "free" },
+            
+            // Node Software
+            { category: "🖥️ Node Software", name: "Umbrel", url: "https://umbrel.com", desc: "Node Bitcoin pessoal e fácil", tags: ["node", "opensource", "popular"], platform: "hardware", price: "free" },
+            { category: "🖥️ Node Software", name: "myNode", url: "https://mynodebtc.com", desc: "Node Bitcoin completo", tags: ["node", "opensource"], platform: "hardware", price: "free" },
+            { category: "🖥️ Node Software", name: "Raspiblitz", url: "https://raspiblitz.com", desc: "Node em Raspberry Pi", tags: ["node", "opensource", "hardware"], platform: "hardware", price: "free" },
+            { category: "🖥️ Node Software", name: "Start9", url: "https://start9.com", desc: "Soberania digital pessoal", tags: ["node", "opensource", "privacy"], platform: "hardware", price: "free" },
+            { category: "🖥️ Node Software", name: "Bitcoin Core", url: "https://bitcoincore.org", desc: "Implementação de referência", tags: ["node", "opensource", "popular"], platform: "desktop", price: "free" },
+            
+            // Tax Accounting
+            { category: "📑 Tax Accounting", name: "Koinly", url: "https://koinly.io", desc: "Contabilidade e impostos crypto", tags: ["tax", "accounting", "popular"], platform: "web", price: "freemium" },
+            { category: "📑 Tax Accounting", name: "CoinLedger", url: "https://coinledger.io", desc: "Software de impostos crypto", tags: ["tax", "accounting"], platform: "web", price: "freemium" },
+            { category: "📑 Tax Accounting", name: "TokenTax", url: "https://tokentax.co", desc: "Contabilidade crypto avançada", tags: ["tax", "accounting"], platform: "web", price: "paid" },
+            { category: "📑 Tax Accounting", name: "CoinTracker", url: "https://cointracker.io", desc: "Rastreamento de portfolio e tax", tags: ["tax", "portfolio", "popular"], platform: "web", price: "freemium" },
+            
+            // Lightning Wallets
+            { category: "⚡ Lightning Wallets", name: "Phoenix", url: "https://phoenix.acinq.co", desc: "Carteira Lightning não-custodial", tags: ["lightning", "popular", "opensource", "mobile"], platform: "mobile", price: "free" },
+            { category: "⚡ Lightning Wallets", name: "Breez", url: "https://breez.technology", desc: "Lightning wallet com node embutido", tags: ["lightning", "opensource", "node"], platform: "mobile", price: "free" },
+            { category: "⚡ Lightning Wallets", name: "Muun", url: "https://muun.com", desc: "Bitcoin e Lightning simplificadas", tags: ["lightning", "popular", "onchain"], platform: "mobile", price: "free" },
+            { category: "⚡ Lightning Wallets", name: "Zeus", url: "https://zeusln.com", desc: "Carteira Lightning avançada", tags: ["lightning", "opensource", "advanced"], platform: "mobile", price: "free" },
+            { category: "⚡ Lightning Wallets", name: "Alby", url: "https://getalby.com", desc: "Navegador e carteira Lightning", tags: ["lightning", "opensource", "web", "popular"], platform: "web", price: "free" },
+            { category: "⚡ Lightning Wallets", name: "Blixt", url: "https://blixtwallet.github.io", desc: "Lightning wallet com coin control", tags: ["lightning", "opensource", "utxo", "popular"], platform: "mobile", price: "free" },
+            { category: "⚡ Lightning Wallets", name: "BlueWallet", url: "https://bluewallet.io", desc: "Bitcoin e Lightning wallet", tags: ["lightning", "onchain", "opensource", "popular"], platform: "mobile", price: "free" },
+            { category: "⚡ Lightning Wallets", name: "Wallet of Satoshi", url: "https://walletofsatoshi.com", desc: "Lightning wallet simples", tags: ["lightning", "popular", "custodial"], platform: "mobile", price: "free" },
+            { category: "⚡ Lightning Wallets", name: "Strike", url: "https://strike.me", desc: "Pagamentos globais instantâneos", tags: ["lightning", "popular", "payments"], platform: "mobile", price: "free" },
+            { category: "⚡ Lightning Wallets", name: "Blink", url: "https://blink.sv", desc: "Bitcoin banking com Lightning", tags: ["lightning", "popular", "banking"], platform: "mobile", price: "free" },
+            
+            // On-Chain Wallets
+            { category: "₿ On-Chain Wallets", name: "Electrum", url: "https://electrum.org", desc: "Carteira Bitcoin leve e rápida", tags: ["onchain", "popular", "opensource", "desktop"], platform: "desktop", price: "free" },
+            { category: "₿ On-Chain Wallets", name: "Sparrow Wallet", url: "https://sparrowwallet.com", desc: "Carteira Bitcoin avançada", tags: ["onchain", "opensource", "advanced", "utxo", "popular"], platform: "desktop", price: "free" },
+            { category: "₿ On-Chain Wallets", name: "BlueWallet", url: "https://bluewallet.io", desc: "Carteira Bitcoin mobile", tags: ["onchain", "mobile", "opensource", "popular"], platform: "mobile", price: "free" },
+            { category: "₿ On-Chain Wallets", name: "Samourai Wallet", url: "https://samouraiwallet.com", desc: "Privacidade e segurança máxima", tags: ["onchain", "privacy", "mobile"], platform: "mobile", price: "free" },
+            { category: "₿ On-Chain Wallets", name: "Nunchuk", url: "https://nunchuk.io", desc: "Multisig e herança Bitcoin", tags: ["onchain", "multisig", "hardware", "popular"], platform: "mobile", price: "freemium" },
+            { category: "₿ On-Chain Wallets", name: "SeedSigner", url: "https://seedsigner.com", desc: "Assinador de transações air-gapped", tags: ["onchain", "hardware", "opensource", "security"], platform: "hardware", price: "free" },
+            
+            // Multichain & Web3
+            { category: "🌐 Multichain Wallets", name: "Trust Wallet", url: "https://trustwallet.com", desc: "Carteira multi-crypto", tags: ["multichain", "popular", "mobile"], platform: "mobile", price: "free" },
+            { category: "🌐 Multichain Wallets", name: "MetaMask", url: "https://metamask.io", desc: "Carteira Ethereum e EVM", tags: ["multichain", "evm", "popular", "web3"], platform: "web", price: "free" },
+            { category: "🌐 Multichain Wallets", name: "Exodus", url: "https://exodus.com", desc: "Carteira multi-asset", tags: ["multichain", "popular", "desktop"], platform: "desktop", price: "free" },
+            { category: "🌐 Multichain Wallets", name: "Phantom", url: "https://phantom.app", desc: "Carteira Solana e multi-chain", tags: ["multichain", "solana", "popular"], platform: "mobile", price: "free" },
+            { category: "🌐 Multichain Wallets", name: "Blockstream Green", url: "https://blockstream.com/green", desc: "Carteira Bitcoin e Liquid", tags: ["multichain", "liquid", "popular", "opensource"], platform: "mobile", price: "free" },
+            
+            // Hardware Wallets
+            { category: "🔐 Hardware Wallets", name: "Trezor", url: "https://trezor.io", desc: "Hardware wallet pioneira", tags: ["hardware", "popular", "security"], platform: "hardware", price: "paid" },
+            { category: "🔐 Hardware Wallets", name: "Ledger", url: "https://ledger.com", desc: "Hardware wallet segura", tags: ["hardware", "popular", "security"], platform: "hardware", price: "paid" },
+            { category: "🔐 Hardware Wallets", name: "Coldcard", url: "https://coldcard.com", desc: "Hardware wallet Bitcoin-only", tags: ["hardware", "bitcoin-only", "advanced", "security"], platform: "hardware", price: "paid" },
+            { category: "🔐 Hardware Wallets", name: "BitBox02", url: "https://shiftcrypto.ch", desc: "Hardware wallet suíça", tags: ["hardware", "opensource", "security"], platform: "hardware", price: "paid" },
+            { category: "🔐 Hardware Wallets", name: "Jade", url: "https://blockstream.com/jade", desc: "Hardware wallet acessível", tags: ["hardware", "opensource", "security"], platform: "hardware", price: "paid" },
+            
+            // Educational
+            { category: "📚 Educacional", name: "Bitcoin.org", url: "https://bitcoin.org", desc: "Informações e educação Bitcoin", tags: ["education", "popular", "resource"], platform: "web", price: "free" },
+            { category: "📚 Educacional", name: "LearnMeABitcoin", url: "https://learnmeabitcoin.com", desc: "Guia técnico Bitcoin", tags: ["education", "technical"], platform: "web", price: "free" },
+            { category: "📚 Educacional", name: "Andreas Antonopoulos", url: "https://aantonop.com", desc: "Educação e palestras Bitcoin", tags: ["education", "popular", "courses"], platform: "web", price: "freemium" },
+            
+            // Other
+            { category: "⚡ Outros", name: "Stacker News", url: "https://stacker.news", desc: "Reddit-style com Lightning", tags: ["social", "lightning", "community"], platform: "web", price: "free" },
+            { category: "⚡ Outros", name: "LN Markets", url: "https://lnmarkets.com", desc: "Trading com Lightning", tags: ["trading", "lightning", "derivatives"], platform: "web", price: "free" },
+            { category: "⚡ Outros", name: "Bull Bitcoin", url: "https://bullbitcoin.com", desc: "Exchange Bitcoin Canadá", tags: ["exchange", "onchain", "lightning"], platform: "web", price: "free" }
+        ];
 
-        const filterContainer = document.getElementById("filterTagsContainer");
-        if (filterContainer) {
-            const filters = [
-                { id: "all", label: t('filters.all') },
-                { id: "lightning", label: t('filters.lightning') },
-                { id: "hardware", label: t('filters.hardware') },
-                { id: "multisig", label: t('filters.multisig') },
-                { id: "opensource", label: t('filters.opensource') },
-                { id: "onchain", label: t('filters.onchain') },
-                { id: "multichain", label: t('filters.multichain') }
-            ];
-            filterContainer.innerHTML = filters.map(f => 
-                `<button class="filter-chip ${activeFilter === f.id ? 'active' : ''}" data-filter="${f.id}">${f.label}</button>`
-            ).join('');
-            document.querySelectorAll('.filter-chip').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    activeFilter = btn.getAttribute('data-filter');
-                    render();
-                    updateUITexts();
+        // State Management
+        const state = {
+            currentLang: localStorage.getItem('btcTools_lang') || 'pt',
+            darkMode: localStorage.getItem('btcTools_darkMode') === 'true',
+            favorites: JSON.parse(localStorage.getItem('btcTools_favorites') || '[]'),
+            searchQuery: '',
+            activeFilters: {
+                category: null,
+                platform: '',
+                price: '',
+                sortBy: 'name'
+            },
+            utxoData: {
+                orange: [], // 100K - 1.1M sats
+                green: []   // 1.1M - 11M sats
+            }
+        };
+
+        // Utility Functions
+        const debounce = (func, wait) => {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        };
+
+        const formatNumber = (num) => {
+            return new Intl.NumberFormat(state.currentLang === 'pt' ? 'pt-BR' : 
+                                        state.currentLang === 'es' ? 'es-ES' : 
+                                        state.currentLang === 'ja' ? 'ja-JP' : 'en-US').format(num);
+        };
+
+        const formatSats = (sats) => {
+            if (sats >= 1000000) {
+                return `${(sats / 1000000).toFixed(2)}M sats`;
+            } else if (sats >= 1000) {
+                return `${(sats / 1000).toFixed(1)}K sats`;
+            }
+            return `${sats} sats`;
+        };
+
+        // Translation Functions
+        const t = (key, params = {}) => {
+            const lang = translations[state.currentLang] || translations.pt;
+            let text = lang[key] || translations.pt[key] || key;
+            Object.keys(params).forEach(param => {
+                text = text.replace(`{${param}}`, params[param]);
+            });
+            return text;
+        };
+
+        const updateTranslations = () => {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                el.textContent = t(key);
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                el.placeholder = t(key);
+            });
+
+            document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+                const key = el.getAttribute('data-i18n-aria');
+                el.setAttribute('aria-label', t(key));
+            });
+
+            // Update dark mode button text
+            const darkToggle = document.getElementById('darkModeToggle');
+            const darkSpan = darkToggle.querySelector('span:last-child');
+            darkSpan.textContent = state.darkMode ? t('lightMode') : t('darkMode');
+        };
+
+        // Dark Mode
+        const toggleDarkMode = () => {
+            state.darkMode = !state.darkMode;
+            document.body.classList.toggle('dark', state.darkMode);
+            localStorage.setItem('btcTools_darkMode', state.darkMode);
+            
+            const darkToggle = document.getElementById('darkModeToggle');
+            darkToggle.setAttribute('aria-pressed', state.darkMode);
+            darkToggle.querySelector('span:first-child').textContent = state.darkMode ? '☀️' : '🌙';
+            
+            updateTranslations();
+        };
+
+        // Language Switcher
+        const switchLanguage = (lang) => {
+            state.currentLang = lang;
+            localStorage.setItem('btcTools_lang', lang);
+            
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 
+                                           lang === 'en' ? 'en-US' : 
+                                           lang === 'es' ? 'es-ES' : 'ja-JP';
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                const isActive = btn.dataset.lang === lang;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-pressed', isActive);
+            });
+            
+            updateTranslations();
+            renderTools();
+        };
+
+        // Toast Notifications
+        const showToast = (message, type = 'info') => {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.setAttribute('role', 'alert');
+            
+            const icons = {
+                success: '✓',
+                error: '✕',
+                info: 'ℹ'
+            };
+            
+            toast.innerHTML = `
+                <span class="toast-icon" aria-hidden="true">${icons[type]}</span>
+                <span class="toast-message">${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideInRight 0.3s ease reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        };
+
+        // UTXO Visualizer
+        const renderUTXOVisualizer = () => {
+            const orangeContainer = document.getElementById('utxoOrangeContainer');
+            const greenContainer = document.getElementById('utxoGreenContainer');
+            
+            // Clear containers
+            orangeContainer.innerHTML = '';
+            greenContainer.innerHTML = '';
+            
+            // Render Orange UTXOs (100K - 1.1M sats, each chunk = 100K sats)
+            state.utxoData.orange.forEach((utxo, index) => {
+                const totalChunks = 11; // 1.1M / 100K
+                const filledChunks = Math.ceil(utxo.value / 100000);
+                
+                const barContainer = document.createElement('div');
+                barContainer.className = 'utxo-bar-container';
+                barContainer.innerHTML = `
+                    <div class="utxo-bar-header">
+                        <span class="utxo-bar-label">${t('utxoChunk')} ${index + 1}</span>
+                        <span class="utxo-bar-value">${formatSats(utxo.value)}</span>
+                    </div>
+                    <div class="utxo-chunks" role="img" aria-label="${t('utxoOrange')} ${formatSats(utxo.value)}">
+                        ${Array.from({ length: totalChunks }, (_, i) => `
+                            <div class="utxo-chunk ${i < filledChunks ? 'filled' : 'empty'}" 
+                                 tabindex="0" 
+                                 role="button"
+                                 aria-label="${i < filledChunks ? t('utxoChunk') + ' ' + (i + 1) + ': ' + formatSats(100000) : t('utxoChunk') + ' vazio'}">
+                                <span class="utxo-chunk-tooltip">${formatSats(100000)}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="utxo-info">
+                        <span>${filledChunks}/${totalChunks} chunks</span>
+                        <span>${((utxo.value / 1100000) * 100).toFixed(1)}%</span>
+                    </div>
+                `;
+                
+                orangeContainer.appendChild(barContainer);
+            });
+            
+            // Render Green UTXOs (1.1M - 11M sats, each chunk = 1M sats)
+            state.utxoData.green.forEach((utxo, index) => {
+                const totalChunks = 11; // 11M / 1M
+                const filledChunks = Math.ceil(utxo.value / 1000000);
+                
+                const barContainer = document.createElement('div');
+                barContainer.className = 'utxo-bar-container';
+                barContainer.innerHTML = `
+                    <div class="utxo-bar-header">
+                        <span class="utxo-bar-label">${t('utxoChunk')} ${index + 1}</span>
+                        <span class="utxo-bar-value">${formatSats(utxo.value)}</span>
+                    </div>
+                    <div class="utxo-chunks" role="img" aria-label="${t('utxoGreen')} ${formatSats(utxo.value)}">
+                        ${Array.from({ length: totalChunks }, (_, i) => `
+                            <div class="utxo-chunk ${i < filledChunks ? 'filled' : 'empty'}" 
+                                 tabindex="0"
+                                 role="button"
+                                 aria-label="${i < filledChunks ? t('utxoChunk') + ' ' + (i + 1) + ': ' + formatSats(1000000) : t('utxoChunk') + ' vazio'}">
+                                <span class="utxo-chunk-tooltip">${formatSats(1000000)}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="utxo-info">
+                        <span>${filledChunks}/${totalChunks} chunks</span>
+                        <span>${((utxo.value / 11000000) * 100).toFixed(1)}%</span>
+                    </div>
+                `;
+                
+                greenContainer.appendChild(barContainer);
+            });
+            
+            // Update total
+            const totalOrange = state.utxoData.orange.reduce((sum, utxo) => sum + utxo.value, 0);
+            const totalGreen = state.utxoData.green.reduce((sum, utxo) => sum + utxo.value, 0);
+            const total = totalOrange + totalGreen;
+            
+            document.getElementById('utxoTotalValue').textContent = formatSats(total);
+        };
+
+        // Generate Sample UTXO Data
+        const generateSampleUTXOs = () => {
+            // Generate random orange UTXOs (100K - 1.1M sats)
+            state.utxoData.orange = Array.from({ length: 5 }, () => ({
+                value: Math.floor(Math.random() * 1000000) + 100000,
+                txid: `tx${Math.random().toString(36).substr(2, 9)}`,
+                vout: Math.floor(Math.random() * 10)
+            }));
+            
+            // Generate random green UTXOs (1.1M - 11M sats)
+            state.utxoData.green = Array.from({ length: 3 }, () => ({
+                value: Math.floor(Math.random() * 9900000) + 1100000,
+                txid: `tx${Math.random().toString(36).substr(2, 9)}`,
+                vout: Math.floor(Math.random() * 10)
+            }));
+            
+            renderUTXOVisualizer();
+        };
+
+        // Tools Rendering
+        const renderTools = () => {
+            const container = document.getElementById('main-content');
+            const noResults = document.getElementById('noResults');
+            const searchQuery = state.searchQuery.toLowerCase();
+            
+            // Group tools by category
+            const groupedTools = {};
+            
+            toolsData.forEach(tool => {
+                // Filter logic
+                const matchesSearch = tool.name.toLowerCase().includes(searchQuery) || 
+                                     tool.desc.toLowerCase().includes(searchQuery) ||
+                                     tool.category.toLowerCase().includes(searchQuery);
+                const matchesPlatform = !state.activeFilters.platform || tool.platform === state.activeFilters.platform;
+                const matchesPrice = !state.activeFilters.price || tool.price === state.activeFilters.price;
+                const matchesCategory = !state.activeFilters.category || tool.category === state.activeFilters.category;
+                
+                if (matchesSearch && matchesPlatform && matchesPrice && matchesCategory) {
+                    if (!groupedTools[tool.category]) {
+                        groupedTools[tool.category] = [];
+                    }
+                    groupedTools[tool.category].push(tool);
+                }
+            });
+            
+            // Sort tools
+            Object.keys(groupedTools).forEach(category => {
+                groupedTools[category].sort((a, b) => {
+                    switch(state.activeFilters.sortBy) {
+                        case 'name':
+                            return a.name.localeCompare(b.name);
+                        case 'popular':
+                            const aPopular = a.tags.includes('popular') ? 1 : 0;
+                            const bPopular = b.tags.includes('popular') ? 1 : 0;
+                            return bPopular - aPopular;
+                        default:
+                            return 0;
+                    }
                 });
             });
-        }
-
-        const toggleBtn = document.getElementById("darkModeToggle");
-        if (toggleBtn) {
-            const isDark = document.body.classList.contains('dark');
-            toggleBtn.innerHTML = isDark ? t('lightMode') : t('darkMode');
-        }
-
-        render();
-    }
-
-    function setLanguage(lang) {
-        currentLang = lang;
-        localStorage.setItem("btcToolsLang", lang);
-        updateUITexts();
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
-            else btn.classList.remove('active');
-        });
-    }
-
-    function initDarkMode() {
-        const stored = localStorage.getItem("btcToolsDark");
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const isDark = stored === "true" || (stored === null && prefersDark);
-        if (isDark) document.body.classList.add('dark');
-        else document.body.classList.remove('dark');
-
-        const toggleBtn = document.getElementById("darkModeToggle");
-        toggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            const nowDark = document.body.classList.contains('dark');
-            localStorage.setItem("btcToolsDark", nowDark);
-            updateUITexts();
-        });
-        updateUITexts();
-    }
-
-    function init() {
-        const savedLang = localStorage.getItem("btcToolsLang") || "pt";
-        setLanguage(savedLang);
-
-        const searchInput = document.getElementById("searchInput");
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                searchTerm = e.target.value;
-                render();
+            
+            // Clear container
+            container.innerHTML = '';
+            
+            // Check if no results
+            if (Object.keys(groupedTools).length === 0) {
+                noResults.hidden = false;
+                container.setAttribute('aria-busy', 'false');
+                return;
+            }
+            
+            noResults.hidden = true;
+            
+            // Render categories
+            Object.entries(groupedTools).forEach(([category, tools]) => {
+                const card = document.createElement('article');
+                card.className = 'card';
+                card.setAttribute('role', 'region');
+                card.setAttribute('aria-labelledby', `category-${category.replace(/\s+/g, '-')}`);
+                
+                const categoryIcon = category.split(' ')[0];
+                const categoryName = category.split(' ').slice(1).join(' ');
+                
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="card-category">
+                            <span aria-hidden="true">${categoryIcon}</span>
+                            <span>${categoryName}</span>
+                        </div>
+                        <h2 class="card-title" id="category-${category.replace(/\s+/g, '-')}">
+                            ${categoryName}
+                            <span class="card-count">${tools.length}</span>
+                        </h2>
+                    </div>
+                    <div class="tools-list" role="list">
+                        ${tools.map(tool => {
+                            const isFavorite = state.favorites.includes(tool.url);
+                            const badges = tool.tags.map(tag => {
+                                const badgeLabels = {
+                                    popular: ' Popular',
+                                    lightning: '⚡ Lightning',
+                                    opensource: '📖 Open Source',
+                                    hardware: '🔐 Hardware',
+                                    multisig: '🔑 Multisig',
+                                    multichain: '🌐 Multichain',
+                                    new: '✨ Novo'
+                                };
+                                return `<span class="badge ${tag}" aria-label="${badgeLabels[tag] || tag}">${badgeLabels[tag] || tag}</span>`;
+                            }).join('');
+                            
+                            return `
+                                <a href="${tool.url}" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer" 
+                                   class="tool-chip" 
+                                   role="listitem"
+                                   data-url="${tool.url}"
+                                   aria-label="${tool.name}${tool.desc ? ': ' + tool.desc : ''}">
+                                    <div class="tool-info">
+                                        <span class="tool-name">${tool.name}</span>
+                                        <span class="tool-desc">${tool.desc}</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <div class="tool-badges">${badges}</div>
+                                        <button class="tool-favorite ${isFavorite ? 'active' : ''}" 
+                                                data-url="${tool.url}"
+                                                aria-label="${isFavorite ? t('removedFromFavorites') : t('addedToFavorites')} ${tool.name}"
+                                                aria-pressed="${isFavorite}">
+                                            <span aria-hidden="true">${isFavorite ? '❤️' : '🤍'}</span>
+                                        </button>
+                                    </div>
+                                </a>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+                
+                container.appendChild(card);
             });
-        }
+            
+            // Update stats
+            document.getElementById('totalTools').textContent = toolsData.length;
+            document.getElementById('totalCategories').textContent = Object.keys(groupedTools).length;
+            
+            // Add event listeners to favorites
+            document.querySelectorAll('.tool-favorite').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleFavorite(btn.dataset.url);
+                });
+            });
+            
+            container.setAttribute('aria-busy', 'false');
+        };
 
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
-        });
+        // Toggle Favorite
+        const toggleFavorite = (url) => {
+            const index = state.favorites.indexOf(url);
+            if (index > -1) {
+                state.favorites.splice(index, 1);
+                showToast(t('removedFromFavorites'), 'info');
+            } else {
+                state.favorites.push(url);
+                showToast(t('addedToFavorites'), 'success');
+            }
+            localStorage.setItem('btcTools_favorites', JSON.stringify(state.favorites));
+            renderTools();
+        };
 
-        initDarkMode();
-        render();
-    }
+        // Copy to Clipboard
+        const copyToClipboard = async (text) => {
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast(t('copiedToClipboard'), 'success');
+            } catch (err) {
+                showToast('Erro ao copiar', 'error');
+            }
+        };
 
-    init();
-</script>
+        // Filter Tags
+        const renderFilterTags = () => {
+            const container = document.getElementById('filterTagsContainer');
+            const categories = [...new Set(toolsData.map(tool => tool.category))];
+            
+            container.innerHTML = categories.map(cat => {
+                const icon = cat.split(' ')[0];
+                const name = cat.split(' ').slice(1).join(' ');
+                const isActive = state.activeFilters.category === cat;
+                
+                return `
+                    <button class="filter-chip ${isActive ? 'active' : ''}" 
+                            data-category="${cat}"
+                            aria-pressed="${isActive}"
+                            aria-label="${isActive ? 'Remover filtro: ' + name : 'Filtrar por: ' + name}">
+                        <span aria-hidden="true">${icon}</span> ${name}
+                    </button>
+                `;
+            }).join('');
+            
+            // Add event listeners
+            container.querySelectorAll('.filter-chip').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const category = btn.dataset.category;
+                    if (state.activeFilters.category === category) {
+                        state.activeFilters.category = null;
+                    } else {
+                        state.activeFilters.category = category;
+                    }
+                    renderFilterTags();
+                    renderTools();
+                });
+            });
+        };
+
+        // Search Handler
+        const handleSearch = debounce((query) => {
+            state.searchQuery = query;
+            document.getElementById('searchClear').classList.toggle('visible', query.length > 0);
+            renderTools();
+        }, 300);
+
+        // Initialize
+        const init = () => {
+            // Set initial dark mode
+            if (state.darkMode) {
+                document.body.classList.add('dark');
+                document.getElementById('darkModeToggle').setAttribute('aria-pressed', 'true');
+                document.getElementById('darkModeToggle').querySelector('span:first-child').textContent = '☀️';
+            }
+            
+            // Set initial language
+            switchLanguage(state.currentLang);
+            
+            // Generate sample UTXOs
+            generateSampleUTXOs();
+            
+            // Render filter tags
+            renderFilterTags();
+            
+            // Render tools
+            renderTools();
+            
+            // Event Listeners
+            document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
+            });
+            
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                handleSearch(e.target.value);
+            });
+            
+            document.getElementById('searchClear').addEventListener('click', () => {
+                document.getElementById('searchInput').value = '';
+                state.searchQuery = '';
+                document.getElementById('searchClear').classList.remove('visible');
+                renderTools();
+                document.getElementById('searchInput').focus();
+            });
+            
+            // Advanced Filters
+            const advancedFiltersBtn = document.getElementById('advancedFiltersBtn');
+            const advancedFilters = document.getElementById('advancedFilters');
+            
+            advancedFiltersBtn.addEventListener('click', () => {
+                const isExpanded = advancedFiltersBtn.getAttribute('aria-expanded') === 'true';
+                advancedFiltersBtn.setAttribute('aria-expanded', !isExpanded);
+                advancedFilters.classList.toggle('visible');
+                advancedFilters.hidden = isExpanded;
+            });
+            
+            document.getElementById('platformFilter').addEventListener('change', (e) => {
+                state.activeFilters.platform = e.target.value;
+                renderTools();
+            });
+            
+            document.getElementById('priceFilter').addEventListener('change', (e) => {
+                state.activeFilters.price = e.target.value;
+                renderTools();
+            });
+            
+            document.getElementById('sortFilter').addEventListener('change', (e) => {
+                state.activeFilters.sortBy = e.target.value;
+                renderTools();
+            });
+            
+            // Back to Top
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                // ESC to close advanced filters
+                if (e.key === 'Escape') {
+                    advancedFilters.classList.remove('visible');
+                    advancedFilters.hidden = true;
+                    advancedFiltersBtn.setAttribute('aria-expanded', 'false');
+                }
+                
+                // Ctrl/Cmd + K to focus search
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    document.getElementById('searchInput').focus();
+                }
+            });
+            
+            // Service Worker Registration (PWA)
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    // navigator.serviceWorker.register('/sw.js').catch(() => {
+                    //     // Silent fail if no service worker
+                    // });
+                });
+            }
+            
+            // Update stats
+            document.getElementById('totalTools').textContent = toolsData.length;
+            document.getElementById('totalCategories').textContent = new Set(toolsData.map(t => t.category)).size;
+        };
+
+        // Start application
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
 </body>
 </html>
